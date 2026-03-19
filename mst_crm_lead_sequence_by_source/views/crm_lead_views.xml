@@ -1,0 +1,40 @@
+<odoo>
+    <record id="crm_lead_view_form_sequence" model="ir.ui.view">
+        <field name="name">crm.lead.form.sequence</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/div[@class='oe_title']/h1/field[@name='name']" position="before">
+                <h2>
+                    <field name="lead_sequence" class="oe_inline oe_highlight" readonly="1"/>
+                </h2>
+            </xpath>
+            <xpath expr="/form/sheet/group/group[@name='lead_partner']/field[@name='website']" position="after">
+                <field name="source_id" required="1"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page[@name='extra']/group/group[@name='categorization']/field[@name='source_id']" position="replace">
+                <field name="source_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="crm_case_tree_view_leads_sequence" model="ir.ui.view">
+        <field name="name">crm.lead.list.lead.sequence</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="/list/field[@name='name']" position="before">
+                <field name="lead_sequence" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_crm_case_leads_filter_sequence" model="ir.ui.view">
+        <field name="name">crm.lead.search.lead.sequence</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="/search/field[@name='name']" position="after">
+                <field name="lead_sequence" string="Sequence"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
