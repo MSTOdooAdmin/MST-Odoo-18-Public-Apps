@@ -1,5 +1,5 @@
 {
-    "name": "CRM Lead Sequence by Source",
+    "name": "CRM Lead Sequence Number Generation by Source",
     "version": "18.0.1.0",
     "category": "CRM",
     "summary": "Generate CRM lead sequence numbers based on Lead Source (UTM Source).",
