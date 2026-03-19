@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Project: Default Task Stages",
+    "name": "Project Task Default Stages",
     "summary": "Odoo Project Workflow Automation with Default Task Stages",
     "description": """
         Project Default Task Stages
