@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">project.task.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <!-- Hide Right Side State Container -->
+            <xpath expr="//div[contains(@class, 'o_state_container')][field[@name='state']][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Hide Left Side State Container -->
+            <xpath expr="//div[contains(@class, 'o_state_container')][field[@name='state']][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header/field[@name='personal_stage_type_id']" position="replace"/>
+
+        </field>
+    </record>
+    <record id="view_task_kanban_inherit_default_stage" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit.default.stage</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="open_view_my_tasks_list_inherit_stage" model="ir.ui.view">
+        <field name="name">open.view.my.tasks.list.inherit.stage</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.open_view_my_tasks_list_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_tree_inherit_default_stage" model="ir.ui.view">
+        <field name="name">project.task.list.inherit.default.stage</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <!-- Replace default_group_by -->
+            <xpath expr="//list" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_form2_inherited_extend" model="ir.ui.view">
+        <field name="name">project.task.form.inherited.extend</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='timesheet_ids']" position="attributes">
+                <attribute name="context">
+                    {
+                    'default_project_id': project_id,
+                    'default_task_id': id,
+                    'default_name': ''
+                    }
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_kanban_inherit_all_task" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit.my.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban_inherit_all_task"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_kanban_inherit_my_task_1" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit.my.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban_inherit_my_task"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
