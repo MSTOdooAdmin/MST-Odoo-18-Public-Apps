@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_purchase_order_qweb_external_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="mst_mems_purchase_qweb_report.custom_purchase_order_qweb_external_layout_header"/>
+            <t t-raw="0"/>
+            <t t-call="mst_mems_purchase_qweb_report.custom_purchase_order_qweb_external_layout_footer"/>
+        </template>
+
+        <template id="custom_purchase_order_qweb_external_layout_header">
+            <div class="header">
+                <span></span>
+            </div>
+        </template>
+
+        <template id="custom_purchase_order_qweb_external_layout_footer">
+            <div class="footer"
+                 style="border-top:1px solid #000;
+                padding-top:5px;
+                font-size:9px;">
+
+                <div class="row">
+
+                    <div class="col-4" style="text-align:left;">
+                        Generated via MEMS ERP Version V2.1, Powered by Mind Spark Technologies
+                    </div>
+
+                    <div class="col-4" style="text-align:center;">
+                        Date :
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        |
+                        Time :
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/>
+                    </div>
+
+                    <div class="col-4" style="text-align:right;">
+                        Page
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+
+                </div>
+
+            </div>
+        </template>
+    </data>
+</odoo>

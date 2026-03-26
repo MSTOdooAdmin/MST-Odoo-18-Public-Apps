@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record id="paperformat_mst_purchase_order_qweb_reports" model="report.paperformat">
+            <field name="name">MST Purchase Order Paper Format</field>
+            <field name="default" eval="True"/>
+	        <field name="format">A4</field>
+	        <field name="orientation">Portrait</field>
+	        <field name="margin_top">7</field>
+	        <field name="margin_bottom">7</field>
+	        <field name="margin_left">4</field>
+	        <field name="margin_right">4</field>
+	        <field name="header_line">False</field>
+	        <field name="header_spacing">37</field>
+	        <field name="dpi">100</field>
+        </record>
+
+        <record id="action_mst_epurchase_order_qweb_report" model="ir.actions.report">
+            <field name="name">Purchase Order Summary</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mst_mems_purchase_qweb_report.mst_qweb_report_epurchase_order</field>
+            <field name="report_file">mst_mems_purchase_qweb_report.mst_qweb_report_epurchase_order</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="paperformat_id" ref="mst_mems_purchase_qweb_report.paperformat_mst_purchase_order_qweb_reports"/>
+            <field name="print_report_name">('Purchase Order' + ' _ ' + ((object.name).replace('/','-')))</field>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_company_form_inherit_delivery_challan" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.delivery.challan</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='general_info']/group" position="inside">
+                <group string="GST PO Details">
+                    <field name="po_seal"
+                           filename="po_seal"
+                           widget="image"/>
+                    <field name="managing_director"/>
+                    <field name="store_keeper"/>
+                    <field name="po_manager"/>
+                    <field name="bank_acc_no"/>
+                    <field name="bank_ifsc"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
