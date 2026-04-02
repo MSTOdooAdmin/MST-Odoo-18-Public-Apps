@@ -32,7 +32,7 @@
     """,
 
     "author": "Mind Spark Technologies",
-    "website": "https://mindsparktechnologies.com",
+    "website": "https://mindsparktechnologies.com/odoo/",
     "maintainer": "Mind Spark Technologies",
     "category": "Project",
     "version": "18.0.1.0",

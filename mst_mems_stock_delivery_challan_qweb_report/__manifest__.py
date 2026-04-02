@@ -2,7 +2,6 @@
 {
     "name": "Delivery Challan Pdf Report ",
     "summary": "Professional Delivery Challan Report with Seal and Signature",
-
     "description": """
         Delivery Challan QWeb Report for Odoo
         ===========================================
@@ -36,9 +35,8 @@
     """,
 
     "author": "Mind Spark Technologies",
-    "website": "https://mindsparktechnologies.com",
+    "website": "https://mindsparktechnologies.com/odoo/",
     "maintainer": "Mind Spark Technologies",
-
     "category": "Inventory",
     "version": "18.0.1.0",
     "license": "LGPL-3",

@@ -31,7 +31,7 @@
 
         """,
     "author": "Mind Spark Technologies",
-    "website": "https://mindsparktechnologies.com",
+    "website": "https://mindsparktechnologies.com/odoo/",
     "license": "LGPL-3",
     "depends": ["crm", "utm"],
     "data": [
