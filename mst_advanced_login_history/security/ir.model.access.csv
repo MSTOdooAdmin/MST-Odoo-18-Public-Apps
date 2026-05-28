@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_login_history_user,access.login.history.user,model_login_history,base.group_user,1,0,0,0
+access_login_history_admin,access.login.history.admin,model_login_history,base.group_system,1,1,1,1
+access_login_failed_history_user,access.login.failed.history.user,model_login_failed_history,base.group_user,1,0,0,0
+access_login_failed_history_admin,access.login.failed.history.admin,model_login_failed_history,base.group_system,1,1,1,1
