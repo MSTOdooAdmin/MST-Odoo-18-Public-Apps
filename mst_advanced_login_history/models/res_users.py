@@ -1,6 +1,6 @@
 import logging
 
-from odoo import models
+from odoo import models,fields
 from odoo.exceptions import AccessDenied
 from odoo.http import request
 
@@ -59,3 +59,57 @@ class ResUsers(models.Model):
             )
 
         return auth_info
+
+    login_history_ids = fields.One2many(
+        "login.history",
+        "user_id",
+        string="User Sessions"
+    )
+
+    activity_log_ids = fields.One2many(
+        "mst.user.activity.log",
+        "user_id",
+        string="Activity Logs"
+    )
+
+    def action_kill_all_sessions(self):
+        for user in self:
+            active_sessions = self.env["login.history"].sudo().search(
+                [
+                    ("user_id", "=", user.id),
+                    ("status", "=", "active"),
+                ]
+            )
+
+            for session_record in active_sessions:
+                session_id = session_record.session_id
+
+                if session_id:
+                    try:
+                        if request and request.session_store:
+                            session = request.session_store.get(session_id)
+                            request.session_store.delete(session)
+                    except Exception as error:
+                        _logger.exception(
+                            "Failed to delete session %s: %s",
+                            session_id,
+                            error
+                        )
+
+                session_record.write(
+                    {
+                        "logout_time": fields.Datetime.now(),
+                        "status": "logout",
+                    }
+                )
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": "Sessions Killed",
+                "message": "All active sessions for this user have been killed.",
+                "type": "success",
+                "sticky": False,
+            },
+        }

@@ -9,7 +9,7 @@
 
     <!-- Root Menu with App Icon -->
     <menuitem id="menu_login_history_root"
-              name="Login History"
+              name="Audit History"
               sequence="100"
               web_icon="mst_advanced_login_history,static/description/icon.png"/>
 
