@@ -37,4 +37,30 @@
               sequence="30"
               groups="base.group_system"/>
 
+    <menuitem id="menu_mst_user_activity_log"
+              name="Advanced Logs"
+              parent="menu_login_history_root"
+              action="action_mst_user_activity_log"
+              sequence="32"/>   
+    <menuitem id="menu_mst_configured_model_activity_log"
+              name="Model Logs"
+              parent="menu_login_history_root"
+              action="action_mst_configured_model_activity_log"
+              sequence="35"
+              groups="base.group_system"/>          
+
+
+     <menuitem id="menu_mst_activity_log_config_root"
+              name="Configuration"
+              parent="menu_login_history_root"
+              sequence="39"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_mst_activity_log_model_config"
+              name="Model Log Configuration"
+              parent="menu_mst_activity_log_config_root"
+              action="action_mst_activity_log_model_config"
+              sequence="10"
+              groups="base.group_system"/>          
+
 </odoo>

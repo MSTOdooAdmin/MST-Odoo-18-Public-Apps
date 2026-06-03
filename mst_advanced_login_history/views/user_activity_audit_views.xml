@@ -181,11 +181,7 @@
         <field name="search_view_id" ref="view_mst_user_activity_log_search"/>
     </record>
 
-    <menuitem id="menu_mst_user_activity_log"
-              name="Advanced Logs"
-              parent="menu_login_history_root"
-              action="action_mst_user_activity_log"
-              sequence="30"/>
+    
 
     <record id="action_mst_configured_model_activity_log" model="ir.actions.act_window">
         <field name="name">Model Logs</field>
@@ -196,12 +192,7 @@
         <field name="context">{'search_default_group_model': 1}</field>
     </record>
 
-    <menuitem id="menu_mst_configured_model_activity_log"
-              name="Model Logs"
-              parent="menu_login_history_root"
-              action="action_mst_configured_model_activity_log"
-              sequence="35"
-              groups="base.group_system"/>
+    
 
     <record id="view_users_form_activity_audit_inherit" model="ir.ui.view">
         <field name="name">res.users.form.activity.audit.inherit</field>

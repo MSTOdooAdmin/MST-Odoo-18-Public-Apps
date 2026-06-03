@@ -114,17 +114,6 @@
         <field name="search_view_id" ref="view_mst_activity_log_model_config_search"/>
     </record>
 
-    <menuitem id="menu_mst_activity_log_config_root"
-              name="Configuration"
-              parent="menu_login_history_root"
-              sequence="80"
-              groups="base.group_system"/>
-
-    <menuitem id="menu_mst_activity_log_model_config"
-              name="Model Log Configuration"
-              parent="menu_mst_activity_log_config_root"
-              action="action_mst_activity_log_model_config"
-              sequence="10"
-              groups="base.group_system"/>
+   
 
 </odoo>
