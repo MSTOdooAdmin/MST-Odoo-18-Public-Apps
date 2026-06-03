@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================================================= -->
+    <!-- TASK STAGE MASTER: ADD DEFAULT STAGE FIELD -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_type_form_inherit_default_stage" model="ir.ui.view">
+        <field name="name">project.task.type.form.inherit.default.stage</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.view_task_type_form"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="is_default_stage"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mst_view_task_type_tree_inherit_default_stage" model="ir.ui.view">
+        <field name="name">project.task.type.tree.inherit.default.stage</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.view_task_type_tree"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="is_default_stage"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- TASK FORM: SHOW NORMAL STAGE, HIDE PERSONAL STAGE -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_form2_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.form.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+
+            <!-- Show normal project task stage even for private tasks -->
+            <xpath expr="//header/field[@name='stage_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+
+            <!-- Hide personal stage statusbar -->
+            <xpath expr="//header/field[@name='personal_stage_type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Hide default state statusbar -->
+            <xpath expr="//header/field[@name='state']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN TASK KANBAN: FORCE GROUP BY stage_id -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_kanban_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.kanban.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+                <attribute name="examples"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- VERY IMPORTANT: MY TASKS KANBAN VIEW -->
+    <!-- This overrides personal_stage_type_id grouping -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_kanban_inherit_my_task_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit.my.task.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban_inherit_my_task"/>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+                <attribute name="examples"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- ALL TASKS KANBAN VIEW -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_kanban_inherit_all_task_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit.all.task.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban_inherit_all_task"/>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+                <attribute name="examples"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- TASK LIST VIEW: FORCE GROUP BY stage_id -->
+    <!-- ========================================================= -->
+
+    <record id="mst_view_task_tree_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.tree.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- MY TASKS LIST VIEW -->
+    <!-- ========================================================= -->
+
+    <record id="mst_open_view_my_tasks_list_force_stage_id" model="ir.ui.view">
+        <field name="name">project.task.my.tasks.list.force.stage.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.open_view_my_tasks_list_view"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ========================================================= -->
+    <!-- ACTION CONTEXT OVERRIDE -->
+    <!-- ========================================================= -->
+
+    <record id="project.action_view_my_task" model="ir.actions.act_window">
+        <field name="context">
+            {
+                'search_default_open_tasks': 1,
+                'group_by': 'stage_id'
+            }
+        </field>
+    </record>
+
+    <record id="project.action_view_task" model="ir.actions.act_window">
+        <field name="context">
+            {
+                'search_default_open_tasks': 1,
+                'group_by': 'stage_id'
+            }
+        </field>
+    </record>
+
+</odoo>

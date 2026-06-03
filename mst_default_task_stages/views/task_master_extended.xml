@@ -1,0 +1,33 @@
+<odoo>
+    <record id="project_task_type_form_cleanup" model="ir.ui.view">
+        <field name="name">project.task.type.form.cleanup</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="is_default_stage"/>
+            </xpath>
+            <xpath expr="//field[@name='project_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="required">0</attribute>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="project_task_type_tree_remove_group" model="ir.ui.view">
+        <field name="name">project.task.type.tree.remove.group</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="default_group_by"/>
+            </xpath>
+            <xpath expr="//field[@name='project_ids']" position="attributes">
+                <attribute name="required">0</attribute>
+                <attribute name="optional">hide</attribute>
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
