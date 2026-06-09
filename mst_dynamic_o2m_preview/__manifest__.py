@@ -24,6 +24,9 @@ inside parent list views using configurable XML options.
             'mst_dynamic_o2m_preview/static/src/css/dynamic_one2many_preview.css',
         ],
     },
+    "images": [
+        "static/description/banner.png",
+    ],
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
