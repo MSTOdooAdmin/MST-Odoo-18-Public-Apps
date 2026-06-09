@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="mst_dynamic_o2m_preview.DynamicOne2ManyPreview">
+        <div class="o_dynamic_o2m_preview">
+
+            <t t-if="state.loading">
+                <span class="o_dynamic_o2m_empty">Loading...</span>
+            </t>
+
+            <t t-elif="!state.lines.length">
+                <span class="o_dynamic_o2m_empty">No lines</span>
+            </t>
+
+            <t t-else="">
+                <div class="o_dynamic_o2m_scroll">
+                    <table class="o_dynamic_o2m_table"
+                           t-att-style="'min-width:' + tableMinWidth">
+
+                        <thead>
+                            <tr>
+                                <t t-foreach="columns"
+                                   t-as="column"
+                                   t-key="column.name">
+                                    <th t-att-style="'width:' + cellWidth">
+                                        <t t-esc="column.label"/>
+                                    </th>
+                                </t>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-foreach="state.lines"
+                               t-as="line"
+                               t-key="line.id">
+
+                                <tr>
+                                    <t t-foreach="columns"
+                                       t-as="column"
+                                       t-key="column.name">
+
+                                        <td t-att-class="getCellClass(line, column)"
+                                            t-att-title="getCellValue(line, column)"
+                                            t-att-style="'width:' + cellWidth">
+                                            <t t-esc="getCellValue(line, column)"/>
+                                        </td>
+
+                                    </t>
+                                </tr>
+
+                            </t>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <t t-if="hasMoreRecords">
+                    <div class="o_dynamic_o2m_more">
+                        <t t-esc="moreRecordsText"/>
+                    </div>
+                </t>
+            </t>
+
+        </div>
+    </t>
+
+</templates>
