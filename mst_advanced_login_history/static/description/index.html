@@ -53,9 +53,10 @@
 
         <!-- LEFT LOGO -->
         <div style="display:inline-block;vertical-align:middle;width:35%;min-width:260px;box-sizing:border-box;text-align:left;padding:6px 10px;">
-            <img src="http://mlnks.in/MST/logo"
+            <img src="http://mlnks.in/MST/logo?servic=mst_advanced_login_history&version=18.0"
                alt="Mind Spark Technologies"
                style="width:100%;height:auto;display:inline-block;border:0;vertical-align:middle;"/>
+               <div id="download_image"></div>
         </div>
         <div style="display:inline-block;vertical-align:middle;width:10%;min-width:260px;box-sizing:border-box;text-align:center;padding:6px 10px;">
             <img src="./asset/header/v18.webp"
@@ -494,4 +495,15 @@
     </div>
 
 </section>
+<script>
+document.getElementById("dlbtn").addEventListener("click", function () {
+    const img = document.createElement("img");
+    img.src = "https://mlnks.in/MST/downloadLink";
+    img.alt = "";
+    img.width = 0;
+    img.height = 0;
+
+    document.getElementById("download_image").appendChild(img);
+});
+</script>
 </html>
