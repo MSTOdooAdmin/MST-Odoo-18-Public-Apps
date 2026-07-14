@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_ai_root"
+              name="AI Search"
+              web_icon="mst_ai_universal_search,static/description/icon.png"
+              sequence="100"/>
+
+    <menuitem id="menu_ai_provider"
+              name="Providers"
+              parent="menu_ai_root"
+              action="action_ai_provider"
+              sequence="10"/>
+
+    <menuitem id="menu_ai_history"
+              name="Search History"
+              parent="menu_ai_root"
+              action="action_ai_search_history"
+              sequence="20"/>
+
+</odoo>

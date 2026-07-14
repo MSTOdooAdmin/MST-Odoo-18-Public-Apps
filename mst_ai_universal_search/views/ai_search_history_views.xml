@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_search_history_list" model="ir.ui.view">
+        <field name="name">ai.search.history.list</field>
+        <field name="model">ai.search.history</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date"/>
+                <field name="user_id"/>
+                <field name="model_name"/>
+                <field name="query"/>
+                <field name="provider_used"/>
+                <field name="status"
+                       decoration-success="status == 'success'"
+                       decoration-danger="status == 'failed'"
+                       widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_search_history_form" model="ir.ui.view">
+        <field name="name">ai.search.history.form</field>
+        <field name="model">ai.search.history</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="model_name"/>
+                        <field name="provider_used"/>
+                        <field name="status"/>
+                    </group>
+                    <group string="Query">
+                        <field name="query" nolabel="1"/>
+                    </group>
+                    <group string="Generated">
+                        <field name="generated_domain"/>
+                        <field name="generated_groupby"/>
+                        <field name="explanation"/>
+                    </group>
+                    <group string="Raw Response">
+                        <field name="response" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_search_history" model="ir.actions.act_window">
+        <field name="name">Search History</field>
+        <field name="res_model">ai.search.history</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
