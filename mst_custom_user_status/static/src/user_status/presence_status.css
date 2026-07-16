@@ -1,0 +1,27 @@
+/* Colors the "Do Not Disturb" and "In a Meeting" presence states
+   wherever Odoo's built-in presence dot is rendered (avatars, kanban
+   cards, list views, Discuss member lists and chat headers).
+
+   Odoo's presence dot component names its CSS class after the raw
+   im_status field value (e.g. o-mail-Presence-online,
+   o-mail-Presence-away). Several plausible selector variants are
+   included below to maximize compatibility across Odoo 18 point
+   releases -- if the dot still shows a generic/no color on your
+   instance, inspect the dot element in your browser dev tools and
+   send me the actual class name so this can be tightened up. */
+
+.o-mail-Presence-busy,
+.o-mail-ImStatus-busy,
+.o_mail_im_status_busy,
+.o_user_avatar.busy,
+[data-im-status="busy"] {
+    background-color: #E24B4A !important;
+}
+
+.o-mail-Presence-meeting,
+.o-mail-ImStatus-meeting,
+.o_mail_im_status_meeting,
+.o_user_avatar.meeting,
+[data-im-status="meeting"] {
+    background-color: #7F77DD !important;
+}
