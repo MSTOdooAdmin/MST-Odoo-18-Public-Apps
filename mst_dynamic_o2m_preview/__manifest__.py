@@ -10,7 +10,7 @@
         This module provides a reusable backend widget to display One2many records
         inside parent list views using configurable XML options.
     """,
-    'author': 'Mind Spark Technologies',
+    'author': 'MindSpark Technologies',
     'website': 'https://www.mindsparktechnologies.com',
     'depends': ['web','sale_management'],
     'data': [

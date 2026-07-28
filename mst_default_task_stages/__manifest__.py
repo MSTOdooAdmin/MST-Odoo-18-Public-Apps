@@ -31,11 +31,11 @@
         Compatible with Odoo Community & Enterprise Edition.
     """,
 
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://mindsparktechnologies.com/odoo/",
-    "maintainer": "Mind Spark Technologies",
+    "maintainer": "MindSpark Technologies",
     "category": "Project",
-    "version": "19.0.1.0",
+    "version": "19.0.1.0.0",
     "license": "LGPL-3",
     "depends": ["project","mail","base"],
     "data": [
