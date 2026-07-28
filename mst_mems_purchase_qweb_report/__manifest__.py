@@ -61,9 +61,9 @@
         vendor purchase order report
     """,
 
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://mindsparktechnologies.com/odoo/",
-    "maintainer": "Mind Spark Technologies",
+    "maintainer": "MindSpark Technologies",
 
     "category": "Purchases",
     "version": "18.0.1.0.0",

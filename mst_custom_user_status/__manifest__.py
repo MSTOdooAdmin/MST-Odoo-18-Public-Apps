@@ -151,12 +151,11 @@
 
     """,
 
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://www.mindsparktechnologies.com",
-    "maintainer": "Mind Spark Technologies",
-
+    "maintainer": "MindSpark Technologies",
     "category": "Discuss",
-    "version": "18.0.1.2.0",
+    "version": "18.0.1.0.0",
     "license": "LGPL-3",
 
     "depends": [

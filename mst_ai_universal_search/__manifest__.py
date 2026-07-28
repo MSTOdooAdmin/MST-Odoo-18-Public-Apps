@@ -99,10 +99,9 @@
 
     """,
 
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://www.mindsparktechnologies.com",
-    "maintainer": "Mind Spark Technologies",
-
+    "maintainer": "MindSpark Technologies",
     "category": "Tools",
     "version": "18.0.5.0",
     "license": "LGPL-3",

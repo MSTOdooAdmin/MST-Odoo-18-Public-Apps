@@ -55,7 +55,7 @@ Benefits
 
 Author
 ------
-Mind Spark Technologies
+MindSpark Technologies
 
 Website
 -------
@@ -67,9 +67,9 @@ For support, contact:
 info@mindsparktechnologies.com
 """,
 
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://mindsparktechnologies.com",
-    "maintainer": "Mind Spark Technologies",
+    "maintainer": "MindSpark Technologies",
 
     "category": "Administration",
     "version": "18.0.1.0.0",

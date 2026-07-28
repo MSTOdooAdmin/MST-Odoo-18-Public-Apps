@@ -30,7 +30,7 @@
         For customizations or enhancements, contact the Mind Spark Technologies.
 
         """,
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://mindsparktechnologies.com/odoo/",
     "license": "LGPL-3",
     "depends": ["crm", "utm"],
