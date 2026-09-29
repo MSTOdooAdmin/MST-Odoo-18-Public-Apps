@@ -1,0 +1,58 @@
+.o_mst_field_highlight {
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+
+    > .o_field_widget {
+        width: 100%;
+        margin: 0;
+    }
+
+    &.o_mst_highlight_active {
+        .o_input,
+        .o_input_dropdown input,
+        textarea,
+        select {
+            background-color: var(--mst-highlight-bg) !important;
+            color: var(--mst-highlight-text) !important;
+        }
+
+        a,
+        span,
+        .o_field_many2one_selection,
+        .o_field_widget {
+            color: var(--mst-highlight-text);
+        }
+    }
+}
+
+.o_mst_highlight_label {
+    display: inline-block;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+// A statusbar lives in the form header and should keep its natural width.
+.o_form_statusbar .o_mst_field_highlight {
+    width: auto;
+    min-width: 0;
+}
+
+.o_form_statusbar .o_mst_field_highlight > .o_field_widget {
+    width: auto;
+}
+
+// Special handling for the statusbar base widget. The wrapper must stay
+// visually neutral; colors are applied to Odoo's real arrow buttons by JS.
+.o_form_statusbar .o_mst_field_highlight.o_mst_statusbar_mode {
+    display: flex;
+    align-items: stretch;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+
+    > .o_field_widget.o_field_statusbar {
+        width: auto;
+        margin: 0;
+    }
+}

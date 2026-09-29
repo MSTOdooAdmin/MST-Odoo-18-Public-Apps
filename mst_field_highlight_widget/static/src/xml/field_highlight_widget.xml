@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mst_field_highlight_widget.FieldHighlightWidget">
+        <div
+            t-ref="this.rootRef"
+            t-att-class="{
+                'o_mst_field_highlight': true,
+                'o_mst_highlight_active': this.hasHighlight,
+                'o_mst_statusbar_mode': this.isStatusbarMode,
+            }"
+            t-att-style="this.highlightStyle"
+        >
+            <Field
+                record="this.props.record"
+                name="this.props.name"
+                fieldInfo="this.innerFieldInfo"
+                readonly="this.props.readonly"
+                id="this.props.id"
+            />
+        </div>
+    </t>
+</templates>

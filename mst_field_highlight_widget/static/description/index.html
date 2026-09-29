@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Field Highlight Widget for Odoo 20</title>
+<meta name="description" content="Field Highlight Widget for Odoo 20 by Mind Spark Technologies. Highlight Odoo form fields and statusbars using direct hex color codes, dynamic value mappings, conditions, label highlighting and developer-friendly XML options."/>
+</head>
+<body style="margin:0;padding:0;background-color:#ffffff;">
+<section style="width:100%;max-width:1180px;margin:0 auto;padding:0 12px;font-family:Arial,Helvetica,sans-serif;color:#253044;box-sizing:border-box;line-height:1.55;overflow:hidden;">
+
+<!-- HEADER -->
+<div style="width:100%;margin:12px auto 18px;background-color:#ffffff;border:1px solid #e8e8e8;border-radius:12px;padding:16px 20px;box-sizing:border-box;box-shadow:0 4px 14px rgba(0,0,0,0.04);text-align:center;font-size:0;">
+    <div style="display:inline-block;vertical-align:middle;width:34%;min-width:240px;box-sizing:border-box;text-align:left;padding:4px 8px;font-size:14px;">
+      <img alt="Mind Spark Technologies" src="https://mlnks.in/Mst/mst_field_highlight_widget_v20" style="width:100%;height:auto;display:inline-block;border:0;vertical-align:middle;max-width:340px;"/>
+    </div>
+    <div style="display:inline-block;vertical-align:middle;width:12%;min-width:140px;box-sizing:border-box;text-align:center;padding:4px 6px;font-size:14px;">
+        <img alt="Odoo 18 Certified" src="./asset/header/odoo18.png" style="max-width:140px;width:100%;height:auto;display:inline-block;border:0;"/>
+    </div>
+    <div style="display:inline-block;vertical-align:middle;width:48%;min-width:260px;box-sizing:border-box;text-align:right;padding:4px 8px;font-size:14px;">
+      <div style="margin:0 0 8px;white-space:normal;text-align:right;">
+        <span style="display:inline-block;font-size:14px;font-weight:800;color:#555;margin:3px 6px 3px 0;vertical-align:middle;">Supports:</span>
+        <span style="display:inline-block;background-color:#75499a;color:#ffffff;font-size:13px;font-weight:800;padding:7px 18px;border-radius:22px;margin:2px;min-width:110px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #75499a;">Community</span>
+        <span style="display:inline-block;background-color:#8d3f7b;color:#ffffff;font-size:13px;font-weight:800;padding:7px 18px;border-radius:22px;margin:2px;min-width:110px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #8d3f7b;">Enterprise</span>
+      </div>
+      <div style="white-space:normal;text-align:right;">
+        <span style="display:inline-block;font-size:14px;font-weight:800;color:#555;margin:3px 6px 3px 0;vertical-align:middle;">Availability:</span>
+        <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;margin:2px;min-width:110px;text-align:center;box-sizing:border-box;vertical-align:middle;">Odoo.sh</span>
+        <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;margin:2px;min-width:110px;text-align:center;box-sizing:border-box;vertical-align:middle;">On Premise</span>
+      </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<div style="width:100%;margin:0 0 28px;padding:28px 18px;border-radius:20px;box-sizing:border-box;background-color:#1f2b5c;background-image:linear-gradient(135deg,#1f2b5c 0%,#45367c 52%,#7d3c98 100%);text-align:center;overflow:hidden;font-size:0;">
+    <div style="display:inline-block;width:100%;max-width:580px;vertical-align:middle;text-align:left;padding:8px 12px;box-sizing:border-box;font-size:16px;">
+        <span style="display:inline-block;padding:6px 12px;border-radius:18px;background-color:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);color:#ffffff;font-weight:800;font-size:11px;letter-spacing:.04em;">ODOO DEVELOPER UI / FIELD WIDGET</span>
+        <h1 style="font-size:34px;line-height:1.15;margin:12px 0 12px;color:#ffffff;font-weight:900;">Highlight Important Fields.<br/>Make Every Value Easy to Notice.</h1>
+        <p style="font-size:15px;line-height:1.7;color:#eef0f7;margin:0 0 18px;">Add clean, dynamic field highlighting to Odoo forms using simple XML options. Use direct hex color codes, conditional rules, value-based colors, label highlights and statusbar styling without creating extra configuration models.</p>
+        <a href="#features" style="display:inline-block;background-color:#ffffff;color:#1f2b5c;text-decoration:none;font-size:13px;font-weight:900;border:1px solid rgba(255,255,255,.55);border-radius:9px;padding:10px 15px;margin:3px 6px 3px 0;">Explore Features</a>
+        <a href="#examples" style="display:inline-block;color:#ffffff;text-decoration:none;font-size:13px;font-weight:900;border:1px solid rgba(255,255,255,.55);border-radius:9px;padding:9px 15px;margin:3px 0;">View Examples</a>
+    </div>
+    <div style="display:inline-block;width:100%;max-width:420px;vertical-align:middle;text-align:left;padding:8px 10px;box-sizing:border-box;font-size:16px;">
+        <div style="background-color:#ffffff;border:1px solid #e4def0;border-radius:14px;padding:14px;box-sizing:border-box;box-shadow:0 10px 24px rgba(0,0,0,.12);">
+            <div style="font-size:12px;font-weight:900;color:#697386;margin-bottom:10px;">DYNAMIC FIELD HIGHLIGHT PREVIEW</div>
+            <div style="margin:8px 0;">
+                <span style="display:inline-block;width:80px;font-size:12px;font-weight:800;color:#1f2b5c;vertical-align:middle;">Status</span>
+                <span style="display:inline-block;background-color:#198754;color:#ffffff;border:1px solid #198754;border-radius:7px;padding:6px 11px;font-size:12px;font-weight:800;vertical-align:middle;">Completed</span>
+            </div>
+            <div style="margin:8px 0;">
+                <span style="display:inline-block;width:80px;font-size:12px;font-weight:800;color:#1f2b5c;vertical-align:middle;">Priority</span>
+                <span style="display:inline-block;background-color:#FFC107;color:#212529;border:1px solid #FFC107;border-radius:7px;padding:6px 11px;font-size:12px;font-weight:800;vertical-align:middle;">High</span>
+            </div>
+            <div style="margin:8px 0;">
+                <span style="display:inline-block;width:80px;font-size:12px;font-weight:800;color:#1f2b5c;vertical-align:middle;">Amount</span>
+                <span style="display:inline-block;background-color:#E7F1FF;color:#084298;border:1px solid #0D6EFD;border-radius:7px;padding:6px 11px;font-size:12px;font-weight:800;vertical-align:middle;">₹ 125,000</span>
+            </div>
+            <div style="margin:12px 0 2px;padding-top:10px;border-top:1px solid #eceaf2;">
+                <span style="display:inline-block;background-color:#6C757D;color:#ffffff;padding:6px 11px;border-radius:16px 0 0 16px;font-size:11px;font-weight:800;">Draft</span><span style="display:inline-block;background-color:#0D6EFD;color:#ffffff;padding:6px 11px;font-size:11px;font-weight:800;">Confirmed</span><span style="display:inline-block;background-color:#198754;color:#ffffff;padding:6px 11px;border-radius:0 16px 16px 0;font-size:11px;font-weight:800;">Done</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<div id="features" style="width:100%;padding:10px 0 24px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 16px;max-width:860px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Main Features</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">A developer-friendly Odoo field widget for highlighting values, labels and current workflow states using XML configuration.</p>
+    </div>
+    <div style="width:100%;text-align:center;font-size:0;box-sizing:border-box;">
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">01</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Direct Hex Color Codes</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Use values such as <b>#198754</b>, <b>#0D6EFD</b> or any valid hex code directly in XML options.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">02</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Automatic Text Contrast</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Readable dark or white text is selected automatically when a direct hex background color is used.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">03</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Dynamic Value Colors</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Map technical field values to different colors with <b>value_colors</b> for states, priorities, categories and more.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">04</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Conditional Highlighting</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Apply highlights using equal, contains, empty, greater, less, in, not in and other built-in comparison operators.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">05</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Custom Field Styling</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Control background, text, border, bold text, border width, radius and padding from XML options.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">06</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Field + Label Highlight</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Highlight the field and its form label together, or disable label highlighting when only the value should stand out.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">07</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Edit / Readonly Modes</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Use <b>apply_mode</b> to show highlighting in edit mode, readonly mode or both without changing field data.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">08</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Preserve Base Widgets</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Wrap existing Odoo widgets such as <b>many2one_avatar</b> or statusbar while retaining their normal functionality.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:190px;box-shadow:0 6px 16px rgba(31,43,92,.05);"><div style="width:40px;height:40px;line-height:40px;border-radius:11px;background-color:#edf7ff;color:#7d3c98;text-align:center;font-size:13px;font-weight:900;margin-bottom:10px;">09</div><h3 style="font-size:17px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;font-weight:900;">Odoo 20 Statusbar Support</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Highlight only the current status and preserve the exact <b>statusbar_visible</b> sequence declared in XML.</p></div></div>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="width:100%;padding:18px 0 26px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 16px;max-width:840px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Simple XML Workflow</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">No configuration menus or database setup. Add the widget and options directly to the view XML.</p>
+    </div>
+    <div style="width:100%;text-align:center;font-size:0;box-sizing:border-box;">
+        <div style="display:inline-block;width:100%;max-width:200px;vertical-align:top;padding:5px;box-sizing:border-box;font-size:14px;"><div style="background-color:#eef6ff;border:1px solid #bfd8ff;border-top:3px solid #3b82f6;border-radius:14px;padding:12px 8px;text-align:center;font-weight:800;color:#1f2b5c;min-height:95px;box-sizing:border-box;"><b style="display:block;margin:0 auto 8px;width:28px;height:28px;line-height:24px;border-radius:50%;background-color:#ffffff;border:2px solid #3b82f6;color:#2563eb;box-sizing:border-box;">1</b>Select Field</div></div>
+        <div style="display:inline-block;width:100%;max-width:200px;vertical-align:top;padding:5px;box-sizing:border-box;font-size:14px;"><div style="background-color:#f6f0ff;border:1px solid #d9c5ff;border-top:3px solid #7c3aed;border-radius:14px;padding:12px 8px;text-align:center;font-weight:800;color:#1f2b5c;min-height:95px;box-sizing:border-box;"><b style="display:block;margin:0 auto 8px;width:28px;height:28px;line-height:24px;border-radius:50%;background-color:#ffffff;border:2px solid #7c3aed;color:#6d28d9;box-sizing:border-box;">2</b>Add Widget</div></div>
+        <div style="display:inline-block;width:100%;max-width:200px;vertical-align:top;padding:5px;box-sizing:border-box;font-size:14px;"><div style="background-color:#ecfdf5;border:1px solid #a7f3d0;border-top:3px solid #10b981;border-radius:14px;padding:12px 8px;text-align:center;font-weight:800;color:#1f2b5c;min-height:95px;box-sizing:border-box;"><b style="display:block;margin:0 auto 8px;width:28px;height:28px;line-height:24px;border-radius:50%;background-color:#ffffff;border:2px solid #10b981;color:#059669;box-sizing:border-box;">3</b>Set Hex / Rules</div></div>
+        <div style="display:inline-block;width:100%;max-width:200px;vertical-align:top;padding:5px;box-sizing:border-box;font-size:14px;"><div style="background-color:#fff7ed;border:1px solid #fed7aa;border-top:3px solid #f59e0b;border-radius:14px;padding:12px 8px;text-align:center;font-weight:800;color:#1f2b5c;min-height:95px;box-sizing:border-box;"><b style="display:block;margin:0 auto 8px;width:28px;height:28px;line-height:24px;border-radius:50%;background-color:#ffffff;border:2px solid #f59e0b;color:#d97706;box-sizing:border-box;">4</b>Upgrade View</div></div>
+        <div style="display:inline-block;width:100%;max-width:200px;vertical-align:top;padding:5px;box-sizing:border-box;font-size:14px;"><div style="background-color:#fff1f2;border:1px solid #fecdd3;border-top:3px solid #e11d48;border-radius:14px;padding:12px 8px;text-align:center;font-weight:800;color:#1f2b5c;min-height:95px;box-sizing:border-box;"><b style="display:block;margin:0 auto 8px;width:28px;height:28px;line-height:24px;border-radius:50%;background-color:#ffffff;border:2px solid #e11d48;color:#be123c;box-sizing:border-box;">5</b>See Highlight</div></div>
+    </div>
+</div>
+
+<!-- EXAMPLES -->
+<div id="examples" style="width:100%;padding:20px 0 28px;box-sizing:border-box;background-color:#fafcff;border-radius:18px;">
+    <div style="text-align:center;margin:0 auto 16px;max-width:840px;padding:0 12px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Developer Usage Examples</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">Use concise XML options to control visual behavior without changing the stored field value.</p>
+    </div>
+    <div style="width:100%;text-align:center;font-size:0;padding:0 8px;box-sizing:border-box;">
+        <div style="display:inline-block;width:100%;max-width:520px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;">
+            <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:260px;">
+                <h3 style="margin:0 0 10px;color:#1f2b5c;font-size:18px;">Basic Hex Highlight</h3>
+                <div style="background-color:#0f172a;color:#e2e8f0;border-radius:10px;padding:12px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:12px;line-height:1.6;white-space:pre-wrap;box-sizing:border-box;">&lt;field name="name"
+       widget="field_highlight"
+       options="{'color': '#FFF3CD'}"/&gt;</div>
+                <div style="margin-top:12px;"><span style="display:inline-block;background-color:#FFF3CD;color:#212529;border:1px solid #FFF3CD;border-radius:7px;padding:7px 12px;font-weight:800;font-size:13px;">Highlighted Field Value</span></div>
+            </div>
+        </div>
+        <div style="display:inline-block;width:100%;max-width:520px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;">
+            <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:16px;box-sizing:border-box;min-height:260px;">
+                <h3 style="margin:0 0 10px;color:#1f2b5c;font-size:18px;">Dynamic State Colors</h3>
+                <div style="background-color:#0f172a;color:#e2e8f0;border-radius:10px;padding:12px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:12px;line-height:1.6;white-space:pre-wrap;box-sizing:border-box;">'value_colors': {
+  'draft': '#6C757D',
+  'confirmed': '#0D6EFD',
+  'done': '#198754',
+  'cancel': '#DC3545'
+}</div>
+                <div style="margin-top:12px;line-height:2.2;"><span style="display:inline-block;background-color:#6C757D;color:#ffffff;border-radius:14px;padding:3px 9px;font-size:11px;font-weight:800;margin:2px;">Draft</span><span style="display:inline-block;background-color:#0D6EFD;color:#ffffff;border-radius:14px;padding:3px 9px;font-size:11px;font-weight:800;margin:2px;">Confirmed</span><span style="display:inline-block;background-color:#198754;color:#ffffff;border-radius:14px;padding:3px 9px;font-size:11px;font-weight:800;margin:2px;">Done</span><span style="display:inline-block;background-color:#DC3545;color:#ffffff;border-radius:14px;padding:3px 9px;font-size:11px;font-weight:800;margin:2px;">Cancelled</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STATUSBAR -->
+<div style="width:100%;padding:22px 0 26px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 14px;max-width:860px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Statusbar Highlighting</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">Keep the native Odoo statusbar experience while giving the current workflow state a clear visual identity.</p>
+    </div>
+    <div style="max-width:860px;margin:0 auto;background-color:#ffffff;border:1px solid #e6e9f2;border-radius:16px;padding:18px 16px;box-sizing:border-box;text-align:center;box-shadow:0 6px 16px rgba(31,43,92,.04);">
+        <div style="margin-bottom:12px;line-height:2.3;"><span style="display:inline-block;background-color:#f1f3f5;color:#495057;padding:6px 14px;border:1px solid #ced4da;font-size:12px;font-weight:800;">Draft</span><span style="display:inline-block;background-color:#f1f3f5;color:#495057;padding:6px 14px;border-top:1px solid #ced4da;border-bottom:1px solid #ced4da;font-size:12px;font-weight:800;">Confirmed</span><span style="display:inline-block;background-color:#198754;color:#ffffff;padding:6px 14px;border:1px solid #198754;font-size:12px;font-weight:900;">Done</span></div>
+        <p style="font-size:13px;line-height:1.65;color:#697386;margin:0;">Only the current status receives the configured color. Other states remain neutral. The widget also keeps the sequence defined by <b>statusbar_visible</b>.</p>
+    </div>
+</div>
+
+<!-- OPTIONS TABLE -->
+<div style="width:100%;padding:18px 0 26px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 14px;max-width:840px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Configuration Options</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">Control the highlight from XML using focused, reusable options.</p>
+    </div>
+    <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #e6e9f2;border-radius:14px;box-sizing:border-box;">
+        <table style="width:100%;min-width:720px;border-collapse:collapse;background-color:#fff;font-size:13px;">
+            <thead><tr><th style="background-color:#1f2b5c;color:#fff;text-align:left;padding:11px 12px;">Option</th><th style="background-color:#1f2b5c;color:#fff;text-align:left;padding:11px 12px;">Purpose</th><th style="background-color:#1f2b5c;color:#fff;text-align:left;padding:11px 12px;">Example</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">color</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Quick direct highlight color.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">#198754</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">value_colors</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Different colors for different technical values.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">draft / confirmed / done</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">operator</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Condition used to decide whether highlight applies.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">equal, contains, greater</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">background_color / text_color</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Fine control over field colors.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">#FFF3CD / #664D03</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">border_color / radius / width</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Control border appearance.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">#FFC107 / 8 / 1</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">apply_mode</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Apply in edit, readonly or both modes.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">both / edit / readonly</td></tr>
+                <tr><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;font-weight:800;color:#1f2b5c;">highlight_label</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">Enable or disable matching label highlight.</td><td style="padding:10px 12px;border-bottom:1px solid #e6e9f2;color:#4f596b;">True / False</td></tr>
+                <tr><td style="padding:10px 12px;font-weight:800;color:#1f2b5c;">base_widget</td><td style="padding:10px 12px;color:#4f596b;">Preserve another Odoo field widget inside the highlighter.</td><td style="padding:10px 12px;color:#4f596b;">statusbar / many2one_avatar</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SUPPORTED FIELDS -->
+<div style="width:100%;padding:16px 0 24px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 14px;max-width:840px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Supported Field Types</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">Use the widget across common business fields in Odoo forms.</p>
+    </div>
+    <div style="text-align:center;line-height:2.3;">
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Boolean</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Integer</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Float</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Monetary</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Many2one</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Selection</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Date</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Datetime</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Char</span>
+        <span style="display:inline-block;font-size:13px;font-weight:700;color:#1f2b5c;background-color:#f2f6fc;border:1px solid #d6deea;border-radius:100px;padding:5px 12px;margin:2px;">Text</span>
+    </div>
+</div>
+
+<!-- WHY THIS APP -->
+<div style="width:100%;padding:16px 0 28px;box-sizing:border-box;">
+    <div style="text-align:center;margin:0 auto 14px;max-width:840px;padding:0 6px;box-sizing:border-box;">
+        <h2 style="font-size:28px;line-height:1.2;color:#1f2b5c;margin:0 0 6px;font-weight:900;">Why This Widget?</h2>
+        <p style="font-size:15px;line-height:1.65;color:#697386;margin:0;">Built for Odoo developers who need clearer visual cues without adding backend configuration complexity.</p>
+    </div>
+    <div style="width:100%;text-align:center;font-size:0;box-sizing:border-box;">
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:15px;padding:16px;min-height:150px;box-sizing:border-box;"><span style="display:inline-block;background-color:#f3e8ff;color:#6b21a8;border:1px solid #d8b4fe;border-radius:16px;padding:3px 9px;font-size:11px;font-weight:900;margin-bottom:8px;">Benefit 1</span><h3 style="font-size:16px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;">Faster Visual Recognition</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Important states and values become easier to identify in busy business forms.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:15px;padding:16px;min-height:150px;box-sizing:border-box;"><span style="display:inline-block;background-color:#f3e8ff;color:#6b21a8;border:1px solid #d8b4fe;border-radius:16px;padding:3px 9px;font-size:11px;font-weight:900;margin-bottom:8px;">Benefit 2</span><h3 style="font-size:16px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;">No Extra Models</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">There are no configuration records, menus, security rules or extra database tables to maintain.</p></div></div>
+        <div style="display:inline-block;width:100%;max-width:360px;vertical-align:top;padding:6px;box-sizing:border-box;font-size:15px;text-align:left;"><div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:15px;padding:16px;min-height:150px;box-sizing:border-box;"><span style="display:inline-block;background-color:#f3e8ff;color:#6b21a8;border:1px solid #d8b4fe;border-radius:16px;padding:3px 9px;font-size:11px;font-weight:900;margin-bottom:8px;">Benefit 3</span><h3 style="font-size:16px;line-height:1.3;margin:0 0 6px;color:#1f2b5c;">Reusable Across Modules</h3><p style="font-size:13px;line-height:1.65;margin:0;color:#697386;">Apply the same widget to standard Odoo apps and custom modules wherever supported field types are used.</p></div></div>
+    </div>
+</div>
+
+<!-- COMPATIBILITY -->
+<div style="margin:12px 0 18px;padding:16px 20px;border-radius:16px;background-color:#fdf7fb;background-image:linear-gradient(135deg,#fdf7fb,#f7f7ff);border:1px solid #e9d7e4;box-shadow:0 6px 18px rgba(0,0,0,0.05);color:#000000;text-align:left;box-sizing:border-box;">
+    <h3 style="margin:0 0 8px;font-size:20px;font-weight:900;color:#001246;line-height:1.3;">Odoo Compatibility &amp; Support</h3>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.7;color:#555555;"><b>Compatible with Odoo 20 Community &amp; Enterprise Editions</b>. This is a frontend developer widget and depends on the standard Odoo web client.</p>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.7;color:#555555;">Includes <b>FREE 90 Days Support from the module purchase date</b>, covering installation assistance, configuration guidance, bug fixes and functional support for the purchased module.</p>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.7;color:#555555;">We also provide <b>custom Odoo widget development, UI enhancements, module customization, migration and third-party integrations</b> based on your business requirements.</p>
+    <p style="margin:0;font-size:14px;line-height:1.7;color:#555555;">For assistance, contact <b><a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a></b>.</p>
+</div>
+
+<!-- FAQ -->
+<div style="padding:6px 0 28px;box-sizing:border-box;">
+    <div style="border:1px solid #ececec;border-radius:20px;background-color:#fbfbfb;padding:22px 22px;box-shadow:0 8px 20px rgba(0,0,0,0.04);text-align:left;box-sizing:border-box;">
+        <h2 style="margin:0 0 14px;font-size:28px;line-height:1.2;font-weight:900;color:#001246;text-align:center;">Frequently Asked Questions</h2>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">1. What does the Field Highlight Widget do?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">It adds configurable visual highlighting to supported Odoo fields using XML options without changing the stored field value.</p></div>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">2. Can I use my own color codes?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">Yes. You can use direct hex color codes such as #198754 or #DC3545. The widget automatically chooses readable text for direct hex backgrounds.</p></div>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">3. Can the color change based on the field value?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">Yes. Use value_colors to map technical values such as draft, confirmed, done or cancel to different colors.</p></div>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">4. Does it support conditional highlighting?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">Yes. The widget supports always, equal, not equal, contains, empty, greater, less, in, not in and related comparison operators.</p></div>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">5. Can I use it with the Odoo statusbar?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">Yes. Set base_widget to statusbar. The widget highlights only the current state and preserves the statusbar_visible sequence declared in XML.</p></div>
+        <div style="background-color:#ffffff;border:1px solid #e6e9f2;border-radius:12px;padding:14px 16px;margin:8px 0;"><h3 style="margin:0 0 5px;font-size:15px;color:#1f2b5c;">6. Does this module add menus or configuration records?</h3><p style="margin:0;font-size:13px;line-height:1.65;color:#697386;">No. It is a developer-only frontend widget. Configuration is done directly in XML view definitions.</p></div>
+    </div>
+</div>
+
+<section style="padding:56px 16px 48px;background-color:#fff;
+                font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+                color:#111827;border-radius:24px !important;border:1px solid #e6e6e6;">
+        <div style="max-width:960px;margin:0 auto;">
+            <!-- Heading -->
+            <div style="text-align:center;max-width:620px;margin:0 auto 8px;">
+<span style="display:inline-block;padding:6px 14px;border-radius:999px;background-color:#fbe4f1;
+                         color:#a3126f;font-size:11.5px;font-weight:700;letter-spacing:.14em;
+                         text-transform:uppercase;">MindSpark Technologies</span>
+                <h2 style="margin:16px 0 10px;font-size:36px;line-height:1.15;font-weight:800;
+                       letter-spacing:-.02em;color:#0f6d7a;">Odoo Services</h2>
+                <p style="margin:0;font-size:16px;line-height:1.6;color:#4b5563;">
+                    Six services around one team &#8212; from the first configuration to the
+                    support ticket.
+                </p>
+            </div>
+            <img alt="MindSpark Odoo Services" src="./asset/screenshots/our%20services.png" style="width:100%;height:auto;display:block;border-radius:14px;" class="img-fluid">
+        </div>
+    </section>
+
+
+
+
+    <!-- DEMO CTA - SIMPLE SAFE VERSION -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <div style="margin-left:0;margin-right:0;border:1px solid #e6e6e6;border-radius:15px;background-color:#fff;background-image:linear-gradient(180deg,#f3dcea 0%,#f9eef5 38%,#ffffff 62%);padding:42px 5px;box-sizing:border-box;" class="row">
+            <div style="vertical-align:middle;box-sizing:border-box;padding:8px 14px;text-align:left;" class="col-12 col-md-6">
+                <h2 style="font-size:36px;line-height:1.2;font-weight:900;color:#1f2933;margin:0 0 18px;letter-spacing:1px;">
+                    <span style="background-color:#b0137b;border-radius:8px;">BOOK</span> YOUR<br>PERSONALIZED DEMO
+                </h2>
+                <p style="font-size:17px;line-height:1.8;color:#8B4E7B;font-weight:800;margin:0 0 24px;">We are
+                    available 24/7 for your service.<br>Contact Us Today!</p>
+                <div style="margin-top:20px;">
+<span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+<img alt="Call" src="./asset/footer/phone_icon.png" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;" class="img-fluid">
+                    USA - +1 407 574 8760
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+<img alt="Call" src="./asset/footer/phone_icon.png" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;" class="img-fluid">
+                   IND - +91 98433 77486
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;word-break:break-word;">
+<img alt="Mail" src="./asset/footer/mail_icon.png" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;" class="img-fluid">
+<a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a>
+</span>
+                </div>
+            </div>
+            <div style="vertical-align:middle;box-sizing:border-box;padding:8px 14px;text-align:center;" class="col-12 col-md-6">
+                <a href="tel:+919843377486" style="display:block;background-color:#b0137b;background-image:linear-gradient(90deg,#b0137b 0%,#7e0f5f 100%);color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #9a1170;">
+                    <img alt="Call" src="./asset/footer/phone_icon.png" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;" class="img-fluid">
+                    <span style="vertical-align:middle;">CALL US</span>
+                </a>
+                <a href="mailto:odooapps@mindsparktechnologies.com" style="display:block;background-color:#8d3f7b;background-image:linear-gradient(90deg,#8d3f7b 0%,#5e2a55 100%);color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #74365f;">
+                    <img alt="Mail" src="./asset/footer/mail_icon.png" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;" class="img-fluid">
+                    <span style="vertical-align:middle;">SEND MAIL</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- STATS -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <h2 style="font-size:34px;line-height:1.25;font-weight:800;color:#333;margin:0 0 30px;">What Makes Us The Best
+            Choice</h2>
+        <div style="text-align:center;margin-left:0;margin-right:0;" class="row">
+            <div style="vertical-align:top;box-sizing:border-box;padding:10px;text-align:left;" class="col-12 col-md-6 col-lg-3">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background-color:#fff;background-image:linear-gradient(180deg,#f3dcea 0%,#f9eef5 30%,#ffffff 50%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">APPS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;min-height:47px;">Custom Odoo apps
+                        for smarter workflows.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">150+</div>
+                </div>
+            </div>
+            <div style="vertical-align:top;box-sizing:border-box;padding:10px;text-align:left;" class="col-12 col-md-6 col-lg-3">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background-color:#fff;background-image:linear-gradient(180deg,#f3dcea 0%,#f9eef5 30%,#ffffff 50%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">CLIENTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;min-height:47px;">Trusted by
+                        businesses worldwide.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">530+</div>
+                </div>
+            </div>
+            <div style="vertical-align:top;box-sizing:border-box;padding:10px;text-align:left;" class="col-12 col-md-6 col-lg-3">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background-color:#fff;background-image:linear-gradient(180deg,#f3dcea 0%,#f9eef5 30%,#ffffff 50%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PRODUCTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;min-height:47px;">Ready-to-use,
+                        high-quality modules.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">40+</div>
+                </div>
+            </div>
+            <div style="vertical-align:top;box-sizing:border-box;padding:10px;text-align:left;" class="col-12 col-md-6 col-lg-3">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background-color:#fff;background-image:linear-gradient(180deg,#f3dcea 0%,#f9eef5 30%,#ffffff 50%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PROJECTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;min-height:47px;">Delivered with
+                        precision and expertise.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">750+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>

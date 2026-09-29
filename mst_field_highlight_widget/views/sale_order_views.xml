@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Field Highlight Widget - Sales samples (Odoo 20)
+        ================================================
+        Only existing fields are changed with position="attributes", so no field is
+        duplicated. Every option not used by the highlight widget (e.g. no_open,
+        no_create) is still passed to the native base widget.
+    -->
+
+    <!-- ===================== Sale Order FORM ===================== -->
+    <record id="view_order_form_field_highlight_sample" model="ir.ui.view">
+        <field name="name">sale.order.form.field.highlight.sample</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- 1. Statusbar: colour the CURRENT state, keep native arrows.
+                    statusbar_visible order (draft,sent,sale) is kept as the visual order. -->
+            <xpath expr="//header/field[@name='state']" position="attributes">
+                <attribute name="widget">field_highlight</attribute>
+                <attribute name="options">{
+                    'base_widget': 'statusbar',
+                    'value_colors': {
+                        'draft': 'gray',
+                        'sent': 'blue',
+                        'sale': 'green',
+                        'cancel': 'red'
+                    }
+                }</attribute>
+            </xpath>
+
+            <!-- 2. Warn when Payment Terms are missing (field + label turn orange). -->
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name="widget">field_highlight</attribute>
+                <attribute name="options">{
+                    'no_open': True,
+                    'no_create': True,
+                    'operator': 'empty',
+                    'color': 'orange',
+                    'bold': True
+                }</attribute>
+            </xpath>
+
+            <!-- 3. Remind about the quotation Expiration date when it is set (yellow). -->
+            <xpath expr="//field[@name='validity_date']" position="attributes">
+                <attribute name="widget">field_highlight</attribute>
+                <attribute name="options">{
+                    'operator': 'not_empty',
+                    'color': 'yellow'
+                }</attribute>
+            </xpath>
+
+            <!-- 4. Customer Reference: custom colour code, only while editing. -->
+            <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                <attribute name="widget">field_highlight</attribute>
+                <attribute name="options">{
+                    'operator': 'empty',
+                    'color': '#E2D9F3',
+                    'apply_mode': 'edit',
+                    'highlight_label': False
+                }</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- ===================== Sale Order LIST (Quotations + Sales Orders) ===================== -->
+    <!-- sale.sale_order_tree is the base list view of both menus. -->
+    <record id="sale_order_tree_field_highlight_sample" model="ir.ui.view">
+        <field name="name">sale.order.list.field.highlight.sample</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+
+            <!-- 5. Big orders: Total above 1,00,000 in bold green (column sum still works). -->
+            <xpath expr="//field[@name='amount_total']" position="attributes">
+                <attribute name="widget">field_highlight</attribute>
+                <attribute name="options">{
+                    'base_widget': 'monetary',
+                    'operator': 'greater',
+                    'comparison_value': 100000,
+                    'color': 'green',
+                    'bold': True
+                }</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
