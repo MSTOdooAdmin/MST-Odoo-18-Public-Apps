@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      img { max-width: 100%; height: auto; }
+      .mst-wrap { box-sizing: border-box; }
+    </style>
+    <title>CRM Lead Sequence Number Generation by Source | Odoo CRM Source Wise Sequence</title>
+    <meta name="description" content="CRM Lead Sequence Number Generation by Source helps Odoo CRM users automatically create lead reference numbers based on lead source prefixes such as Search Engine, LinkedIn, Facebook, Newsletter, and other marketing channels." />
+    <meta name="keywords" content="Odoo CRM Lead Sequence, CRM Lead Number Generation, Odoo Lead Source Sequence, Source Wise Lead Number, Odoo CRM Sequence by Source, Odoo Lead Reference Number, CRM Source Prefix, Odoo CRM Automation, Lead Tracking Odoo, Odoo 20 CRM Module" />
+    <link rel="canonical" href="https://mindsparktechnologies.com/odoo" />
+    <meta property="og:title" content="CRM Lead Sequence Number Generation by Source | Odoo CRM Automation" />
+    <meta property="og:description" content="Automatically generate Odoo CRM lead reference numbers based on selected lead source prefixes for better tracking, reporting, and follow-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mindsparktechnologies.com/odoo" />
+    <meta property="og:image" content="https://mindsparktechnologies.com/odoo/asset/screenshots/1.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CRM Lead Sequence Number Generation by Source",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Odoo 20",
+      "description": "CRM Lead Sequence Number Generation by Source is an Odoo CRM module that automatically creates lead reference numbers based on selected lead source prefixes. Businesses can configure source-wise prefixes for Search Engine, LinkedIn, Facebook, Newsletter, and other marketing channels to improve lead tracking, reporting, and CRM record identification.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Mind Spark Technologies",
+        "url": "https://mindsparktechnologies.com"
+      }
+    }
+    </script>
+</head>
+
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;line-height:1.5;">
+<section style="width:100%;max-width:100%;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;box-sizing:border-box;line-height:1.5;text-align:left;overflow-wrap:break-word;">
+
+     <!-- HEADER -->
+    <div style="width:100%;margin:18px auto 26px;background:#ffffff;border:1px solid #e8e8e8;border-radius:12px;padding:26px 32px;box-sizing:border-box;box-shadow:0 4px 18px rgba(0,0,0,0.04);text-align:justify;">
+
+        <!-- LEFT LOGO -->
+         <div style="display:inline-block;vertical-align:middle;width:35%;min-width:260px;max-width:100%;box-sizing:border-box;text-align:left;padding:6px 10px;">
+                <img src="asset/header/logo.svg"
+                   alt="Mind Spark Technologies"
+                   style="width:100%;max-width:360px;height:auto;display:inline-block;border:0;vertical-align:middle;"/>
+            </div>
+            <div style="display:inline-block;vertical-align:middle;width:10%;min-width:260px;max-width:100%;box-sizing:border-box;text-align:center;padding:6px 10px;">
+                <img src="asset/header/v18.webp"
+                     alt="Odoo 18 Certified"
+                     style="max-width:155px;width:100%;height:auto;display:inline-block;border:0;"/>
+            </div>
+
+        <!-- RIGHT SUPPORT + AVAILABILITY -->
+        <div style="display:inline-block;vertical-align:middle;width:40%;min-width:280px;max-width:100%;box-sizing:border-box;text-align:right;padding:6px 10px;">
+
+            <!-- SUPPORTS -->
+            <div style="margin:0 0 14px;white-space:normal;text-align:right;">
+            <span style="display:inline-block;font-size:16px;font-weight:800;color:#555;margin:5px 10px 5px 0;vertical-align:middle;">
+                Supports:
+            </span>
+
+                <span style="display:inline-block;background-color:#75499a;color:#ffffff;font-size:15px;font-weight:800;padding:10px 28px;border-radius:28px;margin:4px;min-width:140px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #75499a;">
+                Community
+            </span>
+
+                <span style="display:inline-block;background-color:#8d3f7b;color:#ffffff;font-size:15px;font-weight:800;padding:10px 28px;border-radius:28px;margin:4px;min-width:140px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #8d3f7b;">
+                Enterprise
+            </span>
+            </div>
+
+            <!-- AVAILABILITY -->
+            <div style="white-space:normal;text-align:right;">
+            <span style="display:inline-block;font-size:16px;font-weight:800;color:#555;margin:5px 10px 5px 0;vertical-align:middle;">
+                Availability:
+            </span>
+
+                <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:15px;font-weight:600;padding:9px 18px;border-radius:26px;margin:4px;min-width:142px;text-align:center;box-sizing:border-box;vertical-align:middle;">
+                Odoo.sh
+            </span>
+
+                <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:15px;font-weight:600;padding:9px 18px;border-radius:26px;margin:4px;min-width:142px;text-align:center;box-sizing:border-box;vertical-align:middle;">
+                On Premise
+            </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div style="width:100%;margin:18px 0 44px;text-align:center;box-sizing:border-box;">
+        <img src="asset/screenshots/banner.png" alt="CRM Lead Sequence Number Generation by Source" style="width:100%;max-width:100%;height:auto;display:block;border:0;border-radius:18px;box-shadow:0 12px 34px rgba(0,0,0,0.12);" />
+    </div>
+
+    <!-- INTRO SECTION -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px 16px;box-sizing:border-box;">
+            <div style="flex:1 1 280px;min-width:0;box-sizing:border-box;padding:16px 18px;text-align:left;">
+                <h1 style="font-size:34px;line-height:1.18;font-weight:800;color:#222;margin:0 0 18px;">
+                    CRM Lead Sequence Number Generation by Source
+                </h1>
+                <p style="font-size:16px;line-height:1.85;color:#555;margin:0;">
+                    Streamline lead management with Odoo CRM Sequence by Source. This module automatically generates lead reference numbers based on the selected lead source, using configurable source-wise prefixes such as Search Engine, LinkedIn, Facebook, Newsletter, and more. It improves lead tracking, organizes CRM records clearly, and helps teams identify lead origin quickly for better reporting and follow-up.
+                </p>
+            </div>
+            <div style="flex:0 1 240px;min-width:0;box-sizing:border-box;padding:16px 18px;text-align:center;">
+                <a href="https://youtu.be/XOjyJZdEWTY" target="_blank" style="display:inline-block;text-decoration:none;margin:8px 14px 14px;vertical-align:middle;">
+                    <img src="asset/header/watch_demo.png" alt="CRM Lead Sequence Demo" style="max-width:190px;width:100%;height:auto;display:block;border:0;" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:16px 8px;box-sizing:border-box;margin:22px 0 28px;box-shadow:0 6px 22px rgba(0,0,0,0.04);text-align:left;">
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:10px;">
+            <img src="asset/screenshots/lead_source_prefix.png" alt="Lead Source Prefix Configuration in Odoo CRM" style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;" />
+        </div>
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:16px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;">1. Lead Source Prefix Configuration</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">
+                Configure a unique prefix code for every lead source in CRM, such as Search Engine, LinkedIn, Facebook, Newsletter, or other marketing channels. Each source can have its own reference code like SE, IN, FB, or NL to support clear and organized lead numbering.
+
+This setup helps standardize lead records and gives businesses better visibility into where each opportunity is coming from.
+            </p>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:16px 8px;box-sizing:border-box;margin:22px 0 28px;box-shadow:0 6px 22px rgba(0,0,0,0.04);text-align:left;">
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:16px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;">2. Lead Creation with Source Selection</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">
+                During lead creation, users simply select the source from the CRM dropdown list. Based on the chosen source, the system automatically picks the configured prefix and applies the correct sequence logic. This makes lead entry faster, more accurate, and fully aligned with source-based tracking.
+            </p>
+        </div>
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:10px;">
+            <img src="asset/screenshots/lead_creation_with_source.png" alt="Odoo CRM Lead Creation with Source Selection" style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;" />
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div style="display:flex;flex-wrap:wrap;align-items:stretch;width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:16px 8px;box-sizing:border-box;margin:22px 0 28px;box-shadow:0 6px 22px rgba(0,0,0,0.04);text-align:left;">
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:10px;">
+            <img src="asset/screenshots/automatic_lead_sequence.png" alt="Automatic Lead Sequence Generation in Odoo CRM" style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;" />
+        </div>
+        <div style="flex:1 1 460px;min-width:0;max-width:100%;box-sizing:border-box;padding:16px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;">3. Automatic Lead Sequence Generation</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">
+                Once the lead is saved, the module automatically generates a lead reference number using the configured source prefix. For example, a LinkedIn lead can be created as IN00001, while a Facebook lead can follow its own numbering pattern.
+
+This improves lead organization, supports source-wise reporting, and makes CRM records easy to identify, track, and manage.
+            </p>
+        </div>
+    </div>
+
+    <!-- KEY FEATURES -->
+    <div style="width:100%;margin:24px 0 56px;box-sizing:border-box;">
+        <h2 style="font-size:34px;line-height:1.2;font-weight:800;color:#333;margin:0 0 22px;text-align:center;">Key Features</h2>
+        <ul style="font-size:16px;line-height:1.9;color:#444;margin:0;padding-left:24px;text-align:left;">
+            <li>Source-wise CRM lead sequence number generation</li>
+            <li>Configurable prefix codes for each lead source</li>
+            <li>Automatic reference number creation when leads are saved</li>
+            <li>Supports sources like Search Engine, LinkedIn, Facebook, Newsletter, and custom channels</li>
+            <li>Improves lead tracking, filtering, and sales reporting</li>
+            <li>Simple configuration and easy-to-use CRM workflow</li>
+        </ul>
+    </div>
+
+    <!-- BENEFITS -->
+    <div style="width:100%;margin:24px 0 56px;box-sizing:border-box;">
+        <h2 style="font-size:34px;line-height:1.2;font-weight:800;color:#333;margin:0 0 22px;text-align:center;">Benefits</h2>
+        <ul style="font-size:16px;line-height:1.9;color:#444;margin:0;padding-left:24px;text-align:left;">
+            <li>Helps sales teams identify lead origin quickly</li>
+            <li>Reduces manual lead numbering and data entry mistakes</li>
+            <li>Maintains a clean and organized CRM database</li>
+            <li>Supports better lead source analysis and marketing decisions</li>
+            <li>Improves follow-up tracking with clear reference numbers</li>
+            <li>Saves time for CRM users and sales managers</li>
+        </ul>
+    </div>
+
+    <!-- COMPATIBILITY -->
+<div style="
+    margin:18px 0 28px;
+    padding:22px 28px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#fdf7fb,#f7f7ff);
+    border:1px solid #e9d7e4;
+    box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    color:#000000 !important;
+">
+
+        <h3 style="
+        margin:0 0 12px;
+        font-size:24px;
+        font-weight:800;
+        color:#8B4E7B;
+        line-height:1.3;
+    ">
+            Odoo Compatibility & Support
+        </h3>
+
+        <p style="
+        margin:0 0 12px;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+          <b>Fully compatible with Odoo 20 Community &amp; Enterprise Editions</b>, with support, implementation, and deployment services available for <b>all Odoo versions </b>based on your business requirements.
+        </p>
+        <p style="
+        margin:0 0 12px;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+            Includes <b>FREE 90 Days Support (from the module purchase date)</b>, covering installation assistance, configuration guidance, bug fixes, and functional support for the purchased module.
+        </p>
+
+        <p style="
+        margin:0;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+            We also offer <b>customization, feature enhancements, third-party integrations, migration, and seamless integration with your existing Odoo system,</b> tailored to your business workflows and operational requirements, <b>subject to applicable terms and conditions.</b>
+        </p>
+        
+        <p style="
+        margin:0;
+        font-size:16px;
+        line-height:3.5;
+        color:#555555;
+    ">
+            For further assistance or service inquiries, <b>please contact us at <a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a></b>
+        </p>
+        
+         <p style="
+        margin:0;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+           Our experienced Odoo team is ready to help you maximize the value of your Odoo ERP system and achieve your business goals efficiently.
+        </p>
+
+    </div>
+
+    <!-- FAQ -->
+    <div style="padding:10px 0 55px;">
+        <div style="border:1px solid #ececec;border-radius:24px;background-color:#fbfbfb;padding:24px 16px;box-shadow:0 10px 28px rgba(0,0,0,0.05);text-align:left;">
+            <h2 style="margin:0 0 22px;font-size:34px;line-height:1.2;font-weight:900;color:#8B4E7B;text-align:center;">Frequently Asked Questions</h2>
+
+            <div style="margin-bottom:18px;">
+                <h3 style="margin:0 0 8px;font-size:22px;line-height:1.3;color:#000000;">Can I configure different prefixes for different lead sources?</h3>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;">Yes. You can configure a separate prefix for each lead source, such as SE for Search Engine, IN for LinkedIn, FB for Facebook, or any custom prefix.</p>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <h3 style="margin:0 0 8px;font-size:22px;line-height:1.3;color:#000000;">When is the lead sequence number generated?</h3>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;">The sequence number is automatically generated when the lead is saved with a configured lead source.</p>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <h3 style="margin:0 0 8px;font-size:22px;line-height:1.3;color:#000000;">Can this module help with source-wise CRM reporting?</h3>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;">Yes. Since every lead reference number carries the source prefix, teams can quickly identify and analyze leads by marketing source.</p>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <h3 style="margin:0 0 8px;font-size:22px;line-height:1.3;color:#000000;">Does it support custom lead sources?</h3>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;">Yes. The module supports default and custom lead sources based on your CRM configuration.</p>
+            </div>
+
+            <div>
+                <h3 style="margin:0 0 8px;font-size:22px;line-height:1.3;color:#000000;">Is technical support available after purchase?</h3>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#555555;">Yes. Free support is available for installation guidance, bug fixes, and module-related functional assistance.</p>
+            </div>
+        </div>
+    </div>
+    
+    <section style="padding:56px 16px 48px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 100%);
+                font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+                color:#111827;border-radius:24px !important;border:1px solid #e6e6e6;">
+          <div style="max-width:960px;margin:0 auto;">
+
+          <!-- Heading -->
+          <div style="text-align:center;max-width:620px;margin:0 auto 8px;">
+            <span style="display:inline-block;padding:6px 14px;border-radius:999px;background:#fbe4f1;
+                         color:#a3126f;font-size:11.5px;font-weight:700;letter-spacing:.14em;
+                         text-transform:uppercase;">MindSpark Technologies</span>
+            <h2 style="margin:16px 0 10px;font-size:36px;line-height:1.15;font-weight:800;
+                       letter-spacing:-.02em;color:#0f6d7a;">Odoo Services</h2>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:#4b5563;">
+              Six services around one team &mdash; from the first configuration to the
+              support ticket.
+            </p>
+          </div>
+
+          <img src="asset/screenshots/our-services.jpg" alt="Odoo Services"
+                       style="width:100%;height:auto;display:block;border-radius:14px;"/>
+
+          </div>
+    </section>
+
+    <!-- DEMO CTA - SIMPLE SAFE VERSION -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:28px 8px;box-sizing:border-box;">
+            <div style="flex:1 1 280px;min-width:0;max-width:100%;box-sizing:border-box;padding:8px 14px;text-align:left;">
+                <h2 style="font-size:36px;line-height:1.2;font-weight:900;color:#1f2933;margin:0 0 18px;letter-spacing:1px;">
+                    <span style="background:#b0137b;border-radius:8px;">BOOK</span> YOUR<br/>PERSONALIZED DEMO
+                </h2>
+                <p style="font-size:17px;line-height:1.8;color:#8B4E7B;font-weight:800;margin:0 0 24px;">We are
+                    available 24/7 for your service.<br/>Contact Us Today!</p>
+                <div style="margin-top:20px;">
+                <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+                    <img src="asset/footer/phone_icon.png" alt="Call"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    USA - +1 407 574 8760
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+                  <img src="asset/footer/phone_icon.png" alt="Call"
+                       style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                   IND - +91 98433 77486
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;word-break:break-word;">
+                    <img src="asset/footer/mail_icon.png" alt="Mail"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a>
+                </span>
+                </div>
+            </div>
+            <div style="flex:1 1 240px;min-width:0;max-width:100%;box-sizing:border-box;padding:8px 14px;text-align:center;">
+                <a href="tel:+919843377486"
+                   style="display:block;background:#b0137b;color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #b0137b;transition:all 0.3s ease;background-image:linear-gradient(135deg,#b0137b 0%,#7a0f60 100%);">
+                    <img src="asset/footer/phone_icon.png" alt="Call"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <span style="vertical-align:middle;">CALL US</span>
+                </a>
+                <a href="mailto:odooapps@mindsparktechnologies.com"
+                   style="display:block;background:#8d3f7b;color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #8d3f7b;transition:all 0.3s ease;background-image:linear-gradient(135deg,#8d3f7b 0%,#5e2a52 100%);">
+                    <img src="asset/footer/mail_icon.png" alt="Mail"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <span style="vertical-align:middle;">SEND MAIL</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <h2 style="font-size:34px;line-height:1.25;font-weight:800;color:#333;margin:0 0 30px;">What Makes Us The Best
+            Choice</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;">
+            <div style="flex:1 1 200px;max-width:280px;min-width:0;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">APPS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Custom Odoo apps
+                        for smarter workflows.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">150+</div>
+                </div>
+            </div>
+            <div style="flex:1 1 200px;max-width:280px;min-width:0;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">CLIENTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Trusted by
+                        businesses worldwide.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">530+</div>
+                </div>
+            </div>
+            <div style="flex:1 1 200px;max-width:280px;min-width:0;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PRODUCTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Ready-to-use,
+                        high-quality modules.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">40+</div>
+                </div>
+            </div>
+            <div style="flex:1 1 200px;max-width:280px;min-width:0;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PROJECTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Delivered with
+                        precision and expertise.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">750+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
