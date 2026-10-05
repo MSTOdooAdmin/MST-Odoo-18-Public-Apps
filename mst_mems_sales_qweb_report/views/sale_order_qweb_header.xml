@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_sales_contract_qweb_external_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="mst_mems_sales_qweb_report.custom_sales_contract_qweb_external_layout_header"/>
+            <t t-out="0"/>
+            <t t-call="mst_mems_sales_qweb_report.custom_sales_contract_qweb_external_layout_footer"/>
+        </template>
+
+        <template id="custom_sales_contract_qweb_external_layout_header">
+            <div class="header">
+                <span></span>
+            </div>
+        </template>
+
+        <template id="custom_sales_contract_qweb_external_layout_footer">
+            <div class="footer"
+                 style="border-top:1px solid #000;
+                padding-top:5px;
+                font-size:9px;">
+
+                <!-- one-row table instead of Bootstrap row/col-4, so the three parts stay on one line -->
+                <table class="table-borderless" style="width:100%;border-collapse:collapse;table-layout:fixed;font-size:9px;border:0;">
+                    <tr style="border:0;">
+                        <td style="width:40%;text-align:left;vertical-align:top;padding:0;border:0;">
+                            Generated via MEMS ERP Version V2.1, Powered by Mind Spark Technologies
+                        </td>
+                        <td style="width:35%;text-align:center;vertical-align:top;padding:0;border:0;">
+                            Date :
+                            <span t-out="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                            |
+                            Time :
+                            <span t-out="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/>
+                        </td>
+                        <td style="width:25%;text-align:right;vertical-align:top;padding:0;border:0;">
+                            Page
+                            <span class="page"/>
+                            /
+                            <span class="topage"/>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mst_activity_log_model_config_list" model="ir.ui.view">
+        <field name="name">mst.activity.log.model.config.list</field>
+        <field name="model">mst.activity.log.model.config</field>
+        <field name="arch" type="xml">
+            <list string="Model Audit Configuration">
+                <field name="sequence" widget="handle"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="name"/>
+                <field name="model_count" string="Models"/>
+                <field name="model_names" string="Selected Models"/>
+                <field name="track_create" optional="show"/>
+                <field name="track_modify" optional="show"/>
+                <field name="track_delete" optional="show"/>
+                <field name="include_related_line_models" optional="hide"/>
+                <field name="technical_model_names" optional="hide"/>
+                <field name="module_names" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mst_activity_log_model_config_form" model="ir.ui.view">
+        <field name="name">mst.activity.log.model.config.form</field>
+        <field name="model">mst.activity.log.model.config</field>
+        <field name="arch" type="xml">
+            <form string="Model Audit Configuration">
+                <header>
+                    <button name="action_view_model_logs" type="object" string="View Logs"
+                            icon="fa-list" class="btn-primary" invisible="not model_ids"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Configuration">
+                            <field name="active"/>
+                            <field name="model_count" readonly="1"/>
+                            <field name="include_related_line_models"/>
+                        </group>
+                        <group string="Track Operations">
+                            <field name="track_create"/>
+                            <field name="track_modify"/>
+                            <field name="track_delete"/>
+                        </group>
+                    </group>
+                    <group string="Models">
+                        <field name="model_ids" widget="many2many_tags"
+                               options="{'no_create': True, 'no_create_edit': True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Summary" name="summary">
+                            <group>
+                                <field name="model_names" readonly="1"/>
+                                <field name="module_names" readonly="1"/>
+                                <field name="notes" placeholder="Optional notes about this audit configuration..."/>
+                            </group>
+                        </page>
+                        <page string="Technical" name="technical">
+                            <field name="technical_model_names" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mst_activity_log_model_config_search" model="ir.ui.view">
+        <field name="name">mst.activity.log.model.config.search</field>
+        <field name="model">mst.activity.log.model.config</field>
+        <field name="arch" type="xml">
+            <search string="Model Audit Configuration">
+                <field name="name"/>
+                <field name="model_names"/>
+                <separator/>
+                <filter name="active_config" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="inactive_config" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_active" string="Active Status" context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mst_activity_log_model_config" model="ir.actions.act_window">
+        <field name="name">Model Audit Configuration</field>
+        <field name="res_model">mst.activity.log.model.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_mst_activity_log_model_config_search"/>
+    </record>
+</odoo>

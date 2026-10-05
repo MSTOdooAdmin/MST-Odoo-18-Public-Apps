@@ -1,0 +1,911 @@
+
+.mst_login_dashboard {
+    --mst-purple: #7b3fc5;
+    --mst-purple-dark: #6228a8;
+    --mst-pink: #ec1475;
+    --mst-blue: #3f88de;
+    --mst-bg: #f7f4fb;
+    --mst-border: #eadff1;
+    --mst-text: #2f2541;
+    --mst-muted: #8c809c;
+
+    min-height: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 14px;
+    background: linear-gradient(180deg, #f8f5fb 0%, #fbf9fd 100%);
+    color: var(--mst-text);
+
+    * { box-sizing: border-box; }
+}
+
+.mst_login_hero {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: linear-gradient(100deg, #ef1674 0%, #b54aab 45%, #7363c7 72%, #4092df 100%);
+    box-shadow: 0 10px 24px rgba(101, 50, 137, 0.18);
+    color: #fff;
+}
+
+.mst_login_hero_left {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mst_login_title_block { min-width: 0; }
+
+.mst_login_logo_wrap {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 5px 16px rgba(66, 20, 99, 0.2);
+}
+
+.mst_login_logo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.mst_login_hero h1 {
+    margin: 0 0 3px;
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.mst_login_hero p {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.mst_login_refresh {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    background: #fff;
+    color: #c52b82;
+    font-size: 12px;
+    font-weight: 750;
+    box-shadow: 0 5px 16px rgba(64, 22, 92, 0.18);
+}
+
+.mst_login_refresh:hover,
+.mst_login_refresh:focus {
+    background: #fff;
+    color: #90216c;
+}
+
+.mst_login_state {
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid var(--mst-border);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--mst-muted);
+    box-shadow: 0 7px 20px rgba(79, 47, 95, 0.08);
+}
+
+.mst_login_state > i { color: var(--mst-purple); font-size: 22px; }
+.mst_login_state_error { flex-direction: column; text-align: center; }
+
+.mst_login_kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.mst_login_kpi {
+    width: 100%;
+    min-height: 68px;
+    appearance: none;
+    border: 1px solid var(--mst-border);
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    text-align: left;
+    color: inherit;
+    cursor: default;
+    box-shadow: 0 6px 17px rgba(79, 47, 95, 0.07);
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.mst_login_kpi.is_clickable { cursor: pointer; }
+.mst_login_kpi.is_clickable:hover {
+    transform: translateY(-1px);
+    border-color: #d8c5e7;
+    box-shadow: 0 9px 20px rgba(79, 47, 95, 0.11);
+}
+
+.mst_login_kpi_icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1;
+    color: #fff;
+    font-weight: 800;
+}
+
+.mst_login_kpi.primary .mst_login_kpi_icon { background: #6c5ce8; }
+.mst_login_kpi.success .mst_login_kpi_icon { background: #35ad67; }
+.mst_login_kpi.danger .mst_login_kpi_icon { background: #ef4a4d; }
+.mst_login_kpi.purple .mst_login_kpi_icon { background: #8f42b8; }
+
+.mst_login_kpi_text {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.mst_login_kpi_text small {
+    color: #695c78;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.mst_login_kpi_text strong {
+    font-size: 18px;
+    line-height: 1.05;
+    color: #3d304d;
+}
+
+.mst_login_kpi_text > span:last-child {
+    color: #aea4b6;
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mst_login_content_grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(300px, 0.95fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.mst_login_panel {
+    min-width: 0;
+    border: 1px solid var(--mst-border);
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 7px 20px rgba(79, 47, 95, 0.07);
+}
+
+.mst_login_panel_header {
+    min-height: 56px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 13px 14px 10px;
+    border-bottom: 1px solid #efe7f4;
+}
+
+.mst_login_panel_header h2 {
+    margin: 0 0 2px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #3b2e4b;
+}
+
+.mst_login_panel_header p {
+    margin: 0;
+    color: #9c91a7;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.mst_login_count {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #f5f0f8;
+    color: #8b7898;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.mst_login_activity_panel { min-width: 0; }
+
+.mst_login_table_scroll {
+    max-height: 352px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #b05ed5 #f4eff7;
+}
+
+.mst_login_table_scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.mst_login_table_scroll::-webkit-scrollbar-track { background: #f4eff7; }
+.mst_login_table_scroll::-webkit-scrollbar-thumb { background: #b05ed5; border-radius: 8px; }
+
+.mst_login_table {
+    min-width: 920px;
+    color: #4b4057;
+}
+
+.mst_login_table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 10px 11px;
+    border-bottom: 1px solid #ebe3f0;
+    background: #fbf8fd;
+    color: #766783;
+    font-size: 8.5px;
+    font-weight: 800;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.mst_login_table tbody td {
+    padding: 10px 11px;
+    border-color: #f1ebf5;
+    vertical-align: middle;
+    font-size: 9px;
+}
+
+.mst_login_row { cursor: pointer; transition: background 100ms ease; }
+.mst_login_row:hover { background: #fdf9ff; }
+
+.mst_login_user {
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mst_login_avatar {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a84ac7 0%, #6f3fb4 100%);
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.mst_login_user > span:last-child {
+    min-width: 0;
+    display: grid;
+}
+
+.mst_login_user strong {
+    color: #3e324a;
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mst_login_user small {
+    color: #aaa0b2;
+    font-size: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mst_login_time { white-space: nowrap; color: #796e84; }
+.mst_login_ip { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: nowrap; }
+.mst_login_duration { white-space: nowrap; color: #877d91; }
+
+.mst_login_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.mst_login_badge.success { background: #e5f7ec; color: #249259; }
+.mst_login_badge.failed { background: #fde8eb; color: #c33f4f; }
+.mst_login_badge.logout { background: #f0e9f7; color: #7953a1; }
+
+.mst_login_location_cell {
+    min-width: 150px;
+    display: grid;
+    gap: 2px;
+}
+.mst_login_location_cell strong {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #50415d;
+    font-size: 9px;
+    font-weight: 700;
+}
+.mst_login_flag { font-size: 11px; line-height: 1; }
+.mst_login_location_cell small {
+    color: #a59baa;
+    font-size: 8px;
+    line-height: 1.25;
+}
+
+.mst_login_device {
+    min-width: 120px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.mst_login_device i { color: #5b74c6; }
+
+.mst_login_device_chip {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.mst_login_device_chip.browser { background: #4385f5; }
+.mst_login_device_chip.os { background: #6f51b5; }
+.mst_login_device_chip.windows { background: #2196f3; }
+.mst_login_device_chip.linux { background: #607d8b; }
+.mst_login_device_chip.android { background: #43a047; }
+.mst_login_device_chip.ios,
+.mst_login_device_chip.macos { background: #424242; }
+.mst_login_device_chip.chrome { background: #4285f4; }
+.mst_login_device_chip.firefox { background: #ff7043; }
+.mst_login_device_chip.edge { background: #00a1f1; }
+.mst_login_device_chip.safari { background: #5c6bc0; }
+.mst_login_device_chip.opera { background: #ef5350; }
+
+.mst_login_detail_icon_wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mst_login_location_panel {
+    position: sticky;
+    top: 0;
+}
+
+.mst_login_map {
+    width: calc(100% - 24px);
+    height: 185px;
+    display: block;
+    margin: 12px;
+    border: 0;
+    border-radius: 9px;
+    background: #f1edf4;
+}
+
+.mst_login_map_empty {
+    min-height: 185px;
+    margin: 12px;
+    padding: 18px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 5px;
+    text-align: center;
+    background: #f8f5fa;
+    color: #9d91a7;
+}
+
+.mst_login_map_empty i { font-size: 25px; color: #b14bba; }
+.mst_login_map_empty strong { font-size: 11px; color: #65566f; }
+.mst_login_map_empty small { font-size: 9px; }
+
+.mst_login_location_details {
+    display: grid;
+    gap: 0;
+    padding: 0 12px;
+}
+
+.mst_login_location_details > div {
+    display: grid;
+    grid-template-columns: 16px 96px minmax(0, 1fr);
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1eaf5;
+}
+
+.mst_login_location_details > div > i {
+    color: #9253b6;
+    font-size: 10px;
+    text-align: center;
+}
+
+.mst_login_location_details span {
+    color: #8f8299;
+    font-size: 8.5px;
+}
+
+.mst_login_location_details strong {
+    min-width: 0;
+    color: #50415c;
+    font-size: 8.5px;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.mst_login_open_map {
+    width: calc(100% - 24px);
+    margin: 12px;
+    padding: 7px 10px;
+    border: 1px solid #9e58bc;
+    border-radius: 20px;
+    background: #fff;
+    color: #8241a4;
+    font-size: 9px;
+    font-weight: 750;
+}
+
+.mst_login_open_map:hover,
+.mst_login_open_map:focus {
+    background: #8b45aa;
+    color: #fff;
+}
+
+.mst_login_mobile_list {
+    max-height: 64vh;
+    overflow: auto;
+    padding: 10px;
+}
+
+.mst_login_mobile_item {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    margin-bottom: 9px;
+    padding: 11px;
+    border: 1px solid #eee5f3;
+    border-radius: 10px;
+    background: #fff;
+    color: inherit;
+    text-align: left;
+}
+
+.mst_login_mobile_top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.mst_login_mobile_meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.mst_login_mobile_meta > span {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #857a8f;
+    font-size: 9px;
+}
+
+.mst_login_mobile_meta > span > i { width: 12px; color: #8a56ab; }
+.mst_login_mobile_meta > span > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.mst_login_empty {
+    padding: 26px !important;
+    text-align: center;
+    color: #a297ab;
+    font-size: 10px;
+}
+
+@media (max-width: 1199.98px) {
+    .mst_login_kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mst_login_content_grid { grid-template-columns: minmax(0, 1fr) minmax(270px, 0.85fr); }
+}
+
+@media (max-width: 991.98px) {
+    .mst_login_dashboard { padding: 12px; }
+    .mst_login_content_grid { grid-template-columns: 1fr; }
+    .mst_login_location_panel { position: static; }
+    .mst_login_map { height: 230px; }
+}
+
+@media (max-width: 767.98px) {
+    .mst_login_hero { align-items: flex-start; }
+    .mst_login_hero h1 { font-size: 18px; }
+    .mst_login_logo_wrap { width: 40px; height: 40px; flex-basis: 40px; }
+    .mst_login_kpis { grid-template-columns: 1fr; }
+    .mst_login_mobile_meta { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 575.98px) {
+    .mst_login_hero { display: grid; }
+    .mst_login_refresh { width: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+ * Dashboard visual icons
+ * -------------------------------------------------------------------------- */
+.mst_login_avatar {
+    box-shadow: 0 2px 6px rgba(111, 63, 180, 0.22);
+}
+
+.mst_login_avatar > i {
+    display: inline-block;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.mst_login_badge > i {
+    font-size: 9px;
+    line-height: 1;
+}
+
+.mst_login_location_pin {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f1e8f8;
+    color: #8d46b2;
+    font-size: 9px;
+}
+
+.mst_login_visual_icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(54, 43, 69, 0.16);
+}
+
+.mst_login_visual_icon > i {
+    display: inline-block;
+    color: inherit;
+    font-size: inherit;
+    line-height: 1;
+}
+
+.mst_login_visual_icon.browser { background: #4d83e8; }
+.mst_login_visual_icon.browser.chrome,
+.mst_login_visual_icon.browser.chromium { background: #4285f4; }
+.mst_login_visual_icon.browser.firefox { background: #f57c00; }
+.mst_login_visual_icon.browser.edge { background: #0aa6c8; }
+.mst_login_visual_icon.browser.safari { background: #4f8fdb; }
+.mst_login_visual_icon.browser.opera { background: #e83c54; }
+
+.mst_login_visual_icon.os { background: #697687; }
+.mst_login_visual_icon.os.windows { background: #168de2; }
+.mst_login_visual_icon.os.linux { background: #536b7a; }
+.mst_login_visual_icon.os.android { background: #43a047; }
+.mst_login_visual_icon.os.ios,
+.mst_login_visual_icon.os.macos { background: #42464d; }
+
+.mst_login_device_name {
+    color: #5a4e65;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.mst_login_location_details > div {
+    grid-template-columns: 32px 92px minmax(0, 1fr);
+}
+
+.mst_login_side_icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff !important;
+    font-size: 11px !important;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(73, 53, 91, 0.13);
+}
+
+.mst_login_side_icon > i {
+    display: inline-block;
+    color: inherit;
+    font-size: inherit;
+    line-height: 1;
+}
+
+.mst_login_side_icon.location { background: #df4a78; }
+.mst_login_side_icon.ip { background: #477bd8; }
+.mst_login_side_icon.time { background: #8b55b8; }
+.mst_login_side_icon.browser { background: #4285f4; }
+.mst_login_side_icon.browser.firefox { background: #f57c00; }
+.mst_login_side_icon.browser.edge { background: #0aa6c8; }
+.mst_login_side_icon.browser.safari { background: #4f8fdb; }
+.mst_login_side_icon.browser.opera { background: #e83c54; }
+.mst_login_side_icon.os { background: #657483; }
+.mst_login_side_icon.os.windows { background: #168de2; }
+.mst_login_side_icon.os.linux { background: #536b7a; }
+.mst_login_side_icon.os.android { background: #43a047; }
+.mst_login_side_icon.os.ios,
+.mst_login_side_icon.os.macos { background: #42464d; }
+
+.mst_login_side_icon_group {
+    position: relative;
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+}
+
+.mst_login_side_icon_group .mst_login_side_icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    font-size: 10px !important;
+}
+
+.mst_login_side_icon_group .mst_login_side_icon.os {
+    top: 8px;
+    left: 10px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #fff;
+    font-size: 8px !important;
+    z-index: 2;
+}
+
+.mst_login_mobile_device {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.mst_login_mobile_device .mst_login_visual_icon {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+    font-size: 10px;
+}
+
+@media (max-width: 575.98px) {
+    .mst_login_location_details > div {
+        grid-template-columns: 30px 84px minmax(0, 1fr);
+    }
+}
+
+/* --------------------------------------------------------------------------
+ * v1.1.6 - dependency-free SVG dashboard icons
+ * Font Awesome brand glyphs are intentionally not used here. Odoo versions
+ * can load a different icon set, which can leave the coloured circles empty.
+ * Local SVG assets make User / Browser / OS / Location icons deterministic.
+ * -------------------------------------------------------------------------- */
+.mst_login_avatar_img {
+    width: 14px;
+    height: 14px;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.mst_login_inline_info {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.mst_login_compact_icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(69, 53, 91, 0.12);
+}
+
+.mst_login_compact_icon.time { background: #8f42b8; }
+.mst_login_compact_icon.ip { background: #3f80ea; }
+.mst_login_compact_icon.duration { background: #f5a623; }
+
+.mst_login_compact_icon img {
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
+.mst_login_status_symbol {
+    min-width: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.mst_login_location_pin img {
+    width: 11px;
+    height: 11px;
+    display: block;
+}
+
+.mst_login_brand_icon {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.mst_login_brand_icon img {
+    width: 19px;
+    height: 19px;
+    display: block;
+    object-fit: contain;
+}
+
+.mst_login_brand_icon.os img {
+    width: 18px;
+    height: 18px;
+}
+
+.mst_login_brand_icon.small {
+    width: 17px;
+    height: 17px;
+    flex-basis: 17px;
+}
+
+.mst_login_brand_icon.small img {
+    width: 15px;
+    height: 15px;
+}
+
+.mst_login_device {
+    gap: 6px;
+}
+
+.mst_login_side_glyph {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mst_login_side_glyph img {
+    width: 14px;
+    height: 14px;
+    display: block;
+    object-fit: contain;
+}
+
+.mst_login_location_details > div {
+    grid-template-columns: 26px 92px minmax(0, 1fr);
+}
+
+.mst_login_side_device_value {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.mst_login_mobile_glyph {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mst_login_mobile_glyph img {
+    width: 13px;
+    height: 13px;
+    display: block;
+}
+
+.mst_login_mobile_meta > span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mst_login_mobile_device .mst_login_brand_icon {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+}
+
+.mst_login_mobile_device .mst_login_brand_icon img {
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 575.98px) {
+    .mst_login_location_details > div {
+        grid-template-columns: 24px 84px minmax(0, 1fr);
+    }
+    .mst_login_side_device_value {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+.mst_login_button_icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    object-fit: contain;
+    margin-right: 6px;
+    vertical-align: -2px;
+}
+
+.mst_login_map_empty_icon {
+    width: 26px;
+    height: 26px;
+    display: block;
+    margin: 0 auto 8px;
+}

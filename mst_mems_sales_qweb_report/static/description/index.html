@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sales Order Report | Odoo 20 QWeb PDF Report</title>
+
+<meta name="description" content="Odoo 20 Sales Order  Report module helps businesses generate professional QWeb PDF sales order reports with customer details, product lines, quantity, rate, subtotal, amount in words, company branding, signature, seal, and clean print-ready layout." />
+
+<meta name="keywords" content="Sales Order  Report,Odoo 20 Sales Report,Odoo Sales Order PDF,Odoo QWeb PDF Report,Sales Order Report Odoo,Odoo Sales Module Report,Customer Sales Report,Odoo Sales,Odoo PDF Report Module,Odoo Sales Order Print,Sales Order Custom Report,Odoo Quotation Report,Odoo Sales QWeb Report" />
+
+<link rel="canonical" href="https://mindsparktechnologies.com/odoo/" />
+
+<meta property="og:title" content="Sales Order Report | Odoo 20 QWeb PDF Report Module" />
+
+<meta property="og:description" content="Generate professional sales order reports in Odoo 20 with customer details, product lines, quantity, rate, subtotal, amount in words, company branding, signature, seal, and print-ready PDF layout." />
+
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content="https://mindsparktechnologies.com/odoo/" />
+
+<meta property="og:image" content="https://mindsparktechnologies.com/odoo/asset/screenshots/image1.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:title" content="Sales Order Report | Odoo 20 QWeb PDF Report" />
+
+<meta name="twitter:description" content="Professional Odoo 20 sales order PDF report with customer details, product breakdown, amount in words, company branding, signature, and seal." />
+
+<meta name="twitter:image" content="https://mindsparktechnologies.com/odoo/asset/screenshots/image1.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sales Order Report",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Odoo 20",
+  "description": "Odoo 20 Sales Order Report module helps businesses generate professional QWeb PDF sales order reports with customer details, product line details, quantity, rate, subtotal, amount in words, company branding, authorized signature, seal, and clean print-ready layout.",
+  "featureList": [
+    "Professional sales order PDF report",
+    "Customer details with complete address",
+    "Product table with quantity, rate, and subtotal",
+    "Amount in words support",
+    "Company branding with logo, address, and contact details",
+    "Authorized signature and seal section",
+    "Clean QWeb PDF report layout",
+    "A4 optimized print format",
+    "Print and download from sales order screen",
+    "Compatible with Odoo 20 Sales module"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Mind Spark Technologies",
+    "url": "https://mindsparktechnologies.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mind Spark Technologies",
+    "url": "https://mindsparktechnologies.com"
+  }
+}
+</script>
+
+</head>
+
+
+<section
+        style="width:100%;max-width:1180px;margin:0 auto;padding:0 14px;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;box-sizing:border-box;line-height:1.5;">
+
+    <!-- HEADER -->
+    <div style="width:100%;margin:18px auto 26px;background:#ffffff;border:1px solid #e8e8e8;border-radius:12px;padding:26px 32px;box-sizing:border-box;box-shadow:0 4px 18px rgba(0,0,0,0.04);">
+
+        <!-- LEFT LOGO -->
+        <div style="display:inline-block;vertical-align:middle;width:35%;min-width:260px;box-sizing:border-box;text-align:left;padding:6px 10px;">
+            <img src="https://mlnks.in/Mst/sales_qweb_report_v20"
+                 alt="Mind Spark Technologies"
+                 style="width:100%;height:auto;display:inline-block;border:0;vertical-align:middle;"/>
+        </div>
+        <div style="display:inline-block;vertical-align:middle;width:10%;min-width:260px;box-sizing:border-box;text-align:center;padding:6px 10px;">
+            <img src="./asset/header/v18.webp"
+                 alt="Odoo 18 Certified"
+                 style="max-width:155px;width:100%;height:auto;display:inline-block;border:0;"/>
+        </div>
+
+        <!-- RIGHT SUPPORT + AVAILABILITY -->
+        <div style="display:inline-block;vertical-align:middle;width:40%;min-width:280px;box-sizing:border-box;text-align:right;padding:6px 10px;">
+
+            <!-- SUPPORTS -->
+            <div style="margin:0 0 14px;white-space:normal;text-align:right;">
+            <span style="display:inline-block;font-size:16px;font-weight:800;color:#555;margin:5px 10px 5px 0;vertical-align:middle;">
+                Supports:
+            </span>
+
+                <span style="display:inline-block;background-color:#75499a;color:#ffffff;font-size:15px;font-weight:800;padding:10px 28px;border-radius:28px;margin:4px;min-width:140px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #75499a;">
+                Community
+            </span>
+
+                <span style="display:inline-block;background-color:#8d3f7b;color:#ffffff;font-size:15px;font-weight:800;padding:10px 28px;border-radius:28px;margin:4px;min-width:140px;text-align:center;box-sizing:border-box;vertical-align:middle;border:1px solid #8d3f7b;">
+                Enterprise
+            </span>
+            </div>
+
+            <!-- AVAILABILITY -->
+            <div style="white-space:normal;text-align:right;">
+            <span style="display:inline-block;font-size:16px;font-weight:800;color:#555;margin:5px 10px 5px 0;vertical-align:middle;">
+                Availability:
+            </span>
+
+                <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:15px;font-weight:600;padding:9px 18px;border-radius:26px;margin:4px;min-width:142px;text-align:center;box-sizing:border-box;vertical-align:middle;">
+                Odoo.sh
+            </span>
+
+                <span style="display:inline-block;border:1px solid #e6e6e6;background-color:#ffffff;color:#333;font-size:15px;font-weight:600;padding:9px 18px;border-radius:26px;margin:4px;min-width:142px;text-align:center;box-sizing:border-box;vertical-align:middle;">
+                On Premise
+            </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div style="width:100%;margin:18px 0 44px;text-align:center;box-sizing:border-box;">
+        <img src="./asset/screenshots/sale_image.png" alt="sale_image"
+             style="width:100%;max-width:100%;height:auto;display:block;border:0;border-radius:18px;box-shadow:0 12px 34px rgba(0,0,0,0.12);"/>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px 32px;box-sizing:border-box;">
+            <div style="display:inline-block;vertical-align:middle;width:69%;min-width:300px;box-sizing:border-box;padding:16px 18px;text-align:left;">
+                <h2 style="font-size:34px;line-height:1.18;font-weight:800;color:#222;margin:0 0 18px;">Sales Order Summary Report (QWeb PDF)</h2>
+                <p style="font-size:16px;line-height:1.85;color:#555;margin:0;">Managing your sales process becomes seamless with the Sales Order Summary QWeb Report module.
+                    This module provides a professionally designed Sales Order report in Odoo 20 ,
+                    including company seal and authorized signature.</p>
+                <br>
+                <p style="font-size:16px;line-height:1.85;color:#555;margin:0;">It eliminates manual formatting, ensures accurate documentation, and enhances business
+                    professionalism with clean, structured reports.</p>
+            </div>
+            <div style="display:inline-block;vertical-align:middle;width:29%;min-width:280px;box-sizing:border-box;padding:16px 18px;text-align:center;">
+               <a href="/mst_mems_sales_qweb_report/static/description/asset/screenshots/report.png" target="_blank"
+                   style="display:inline-block !important;text-decoration:none !important;vertical-align:middle !important;">
+                    <img src="./asset/header/Preview.png" alt="Preview"
+                         style="height:120px !important;width:auto !important;display:inline-block !important;cursor:pointer !important;border-radius:14px !important;vertical-align:middle !important;"/>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div style="width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:28px;box-sizing:border-box;margin:22px 0 52px;box-shadow:0 6px 22px rgba(0,0,0,0.04);">
+        <div style="display:inline-block;vertical-align:middle;width:58%;min-width:300px;box-sizing:border-box;padding:10px;">
+            <img src="./asset/screenshots/app.png" alt="App"
+                 style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;"/>
+        </div>
+        <div style="display:inline-block;vertical-align:middle;width:41%;min-width:280px;box-sizing:border-box;padding:22px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;">Module Installation</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">By navigating to the Apps section, the user can search for the module using its name, such
+                            as Sales Order Summary Report (QWeb PDF).
+                            Once the module appears in the search results, the user can review the details and click on
+                            the Install button to proceed.
+                            After installation, the module will be activated automatically and its features will be
+                            available in the system.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div style="width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:28px;box-sizing:border-box;margin:22px 0 52px;box-shadow:0 6px 22px rgba(0,0,0,0.04);">
+        <div style="display:inline-block;vertical-align:middle;width:41%;min-width:280px;box-sizing:border-box;padding:22px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;"> Print & Download Report</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">In the Sale Order screen, users can access the Print option and select 'Sale Order Summary'.</p>
+            <br>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">The Sales Order module provides a dedicated print option to generate the Sales Order Summary
+                            report directly from the quotation or order screen.
+                            Users can access the report through the Print menu and instantly download it in QWeb (PDF)
+                            format.
+
+                            The report is generated with properly structured headers and footers, ensuring a
+                            professional and consistent layout.
+                            This allows users to quickly download and share well-formatted reports without any
+                            additional configuration.</p>
+        </div>
+        <div style="display:inline-block;vertical-align:middle;width:58%;min-width:300px;box-sizing:border-box;padding:10px;">
+            <img src="./asset/screenshots/print_image.png" alt="report_print"
+                 style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;"/>
+        </div>
+    </div>
+
+     <!-- SECTION 3 -->
+    <div style="width:100%;background:#f8f8f8;border:1px solid #eeeeee;border-radius:20px;padding:28px;box-sizing:border-box;margin:22px 0 52px;box-shadow:0 6px 22px rgba(0,0,0,0.04);">
+        <div style="display:inline-block;vertical-align:middle;width:58%;min-width:300px;box-sizing:border-box;padding:10px;">
+            <img src="./asset/screenshots/report_image.png" alt="report_image"
+                 style="width:100%;height:auto;display:block;border:1px solid #e6e6e6;border-radius:14px;"/>
+        </div>
+        <div style="display:inline-block;vertical-align:middle;width:41%;min-width:280px;box-sizing:border-box;padding:22px;">
+            <h2 style="font-size:32px;line-height:1.18;font-weight:800;color:#8B4E7B;margin:0 0 16px;">Sale Report Details</h2>
+            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;"> Sales Order Summary Report provides a complete and structured view of customer details,
+                            including company name, address, state information, and tax identification numbers, ensuring
+                            accurate record-keeping.</p>
+                            <br>
+                            <p style="font-size:16px;line-height:1.85;color:#444;margin:0;">
+                        The report provides dedicated sections for Authorised Signatory and Seal, allowing official
+                            validation and approval of the document.
+                            Overall, this report ensures accuracy, compliance, and professionalism by combining customer
+                            details, financial calculations, and approval sections in a single document.</p>
+        </div>
+    </div>
+
+    
+    <!-- KEY FEATURES -->
+<div style="width:100%;margin:24px 0 56px;box-sizing:border-box;">
+    <h2 style="font-size:34px;line-height:1.2;font-weight:800;color:#333;margin:0 0 22px;text-align:center;">
+        Key Features
+    </h2>
+
+    <ul style="font-size:16px;line-height:1.9;color:#444;margin:0;padding-left:24px;">
+    <li>Professional Sales Order Summary PDF Report</li>
+    <li>Clean and Structured QWeb Report Layout</li>
+    <li>Customer Details with Complete Address</li>
+    <li>Item-wise Product Line Breakdown</li>
+    <li>Quantity, Rate, and Subtotal Display</li>
+    <li>Amount in Words Support</li>
+    <li>Company Branding with Logo and Contact Details</li>
+    </ul>
+</div>
+
+<!-- BENEFITS -->
+<div style="width:100%;margin:24px 0 56px;box-sizing:border-box;">
+    <h2 style="font-size:34px;line-height:1.2;font-weight:800;color:#333;margin:0 0 22px;text-align:center;">
+        Benefits
+    </h2>
+
+    <ul style="font-size:16px;line-height:1.9;color:#444;margin:0;padding-left:24px;">
+      <li>Improves Sales Order Documentation</li>
+    <li>Helps Maintain Professional Customer Communication</li>
+    <li>Reduces Manual Sales Report Preparation Work</li>
+    <li>Provides Clear Customer, Product, and Amount Details</li>
+    <li>Improves Sales Process Visibility</li>
+    <li>Ensures Consistent Sales Order Report Format</li>
+    <li>Supports Better Internal Approval and Validation</li>
+    <li>Helps Businesses Share Clean Print-ready Sales Reports</li>
+    </ul>
+</div>
+
+<!-- COMPATIBILITY -->
+<div style="
+    margin:18px 0 28px;
+    padding:22px 28px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#fdf7fb,#f7f7ff);
+    border:1px solid #e9d7e4;
+    box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    color:#000000 !important;
+">
+
+        <h3 style="
+        margin:0 0 12px;
+        font-size:24px;
+        font-weight:800;
+        color:#8B4E7B;
+        line-height:1.3;
+    ">
+            Odoo Compatibility & Support
+        </h3>
+
+        <p style="
+        margin:0 0 12px;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+          <b>Fully compatible with Odoo 20 Community & Enterprise Editions</b>, with support, implementation, and deployment services available for <b>all Odoo versions </b>based on your business requirements.
+        </p>
+        <p style="
+        margin:0 0 12px;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+            Includes <b>FREE 90 Days Support (from the module purchase date)</b>, covering installation assistance, configuration guidance, bug fixes, and functional support for the purchased module.
+        </p>
+
+        <p style="
+        margin:0;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+            We also offer <b>customization, feature enhancements, third-party integrations, migration, and seamless integration with your existing Odoo system,</b> tailored to your business workflows and operational requirements, <b>subject to applicable terms and conditions.</b>
+        </p>
+        
+        <p style="
+        margin:0;
+        font-size:16px;
+        line-height:3.5;
+        color:#555555;
+    ">
+            For further assistance or service inquiries, <b>please contact us at <a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a></b>
+        </p>
+        
+         <p style="
+        margin:0;
+        font-size:16px;
+        line-height:1.9;
+        color:#555555;
+    ">
+           Our experienced Odoo team is ready to help you maximize the value of your Odoo ERP system and achieve your business goals efficiently.
+        </p>
+
+    </div>
+
+    <!-- FAQ -->
+    <div style="padding:10px 0 55px !important;">
+        <div style="border:1px solid #ececec !important;border-radius:24px !important;background-color:#fbfbfb !important;padding:40px 42px !important;box-shadow:0 10px 28px rgba(0,0,0,0.05) !important;">
+
+            <h2 style="margin:0 0 22px !important;font-size:34px !important;line-height:1.2 !important;font-weight:900 !important;color:#8B4E7B !important;text-align:center !important;">
+                Frequently Asked Questions
+            </h2>
+
+            <!-- FAQ 1 -->
+            <div style="margin-bottom:18px !important;">
+                <h3 style="margin:0 0 8px !important;font-size:22px !important;line-height:1.3 !important;color:#000000 !important;">
+                    Does this module support Odoo 20?
+                </h3>
+
+                <p style="margin:0 !important;font-size:16px !important;line-height:1.8 !important;color:#555555 !important;">
+                    Yes, the module is fully compatible with Odoo 20 Community and Enterprise editions.
+                </p>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div style="margin-bottom:18px !important;">
+                <h3 style="margin:0 0 8px !important;font-size:22px !important;line-height:1.3 !important;color:#000000 !important;">
+                    What is the purpose of this Sales Order Summary Report module?
+                </h3>
+
+                <p style="margin:0 !important;font-size:16px !important;line-height:1.8 !important;color:#555555 !important;">
+                   This module helps businesses generate a clean and professional sales order summary report in PDF format with customer details, product lines, amount in words, company branding, signature, and seal.
+                </p>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div style="margin-bottom:18px !important;">
+                <h3 style="margin:0 0 8px !important;font-size:22px !important;line-height:1.3 !important;color:#000000 !important;">
+                    Can the report show customer and product details?
+                </h3>
+
+                <p style="margin:0 !important;font-size:16px !important;line-height:1.8 !important;color:#555555 !important;">
+                   Yes, the report displays customer information, complete address, product details, quantity, rate, subtotal, and total amount clearly.
+                </p>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div style="margin-bottom:18px !important;">
+                <h3 style="margin:0 0 8px !important;font-size:22px !important;line-height:1.3 !important;color:#000000 !important;">
+                    How can users print or download the sales report?
+                </h3>
+
+                <p style="margin:0 !important;font-size:16px !important;line-height:1.8 !important;color:#555555 !important;">
+                    Users can open the quotation or sales order screen, click the Print option, and select the Sales Order Summary report to generate and download the PDF.
+                </p>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div style="margin-bottom:18px !important;">
+                <h3 style="margin:0 0 8px !important;font-size:22px !important;line-height:1.3 !important;color:#000000 !important;">
+                    Does this report include signature and seal sections?
+                </h3>
+
+                <p style="margin:0 !important;font-size:16px !important;line-height:1.8 !important;color:#555555 !important;">
+                    Yes, the report includes authorized signature and company seal sections for official validation and professional documentation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section style="padding:56px 16px 48px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 100%);
+                font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+                color:#111827;border-radius:24px !important;border:1px solid #e6e6e6;">
+          <div style="max-width:960px;margin:0 auto;">
+
+          <!-- Heading -->
+          <div style="text-align:center;max-width:620px;margin:0 auto 8px;">
+            <span style="display:inline-block;padding:6px 14px;border-radius:999px;background:#fbe4f1;
+                         color:#a3126f;font-size:11.5px;font-weight:700;letter-spacing:.14em;
+                         text-transform:uppercase;">MindSpark Technologies</span>
+            <h2 style="margin:16px 0 10px;font-size:36px;line-height:1.15;font-weight:800;
+                       letter-spacing:-.02em;color:#0f6d7a;">Odoo Services</h2>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:#4b5563;">
+              Six services around one team &mdash; from the first configuration to the
+              support ticket.
+            </p>
+          </div>
+
+          <img src="./asset/screenshots/our services.png" alt="Search Field Configuration"
+                       style="width:100%;height:auto;display:block;border-radius:14px;"/>
+
+          </div>
+    </section>
+
+    <!-- DEMO CTA - SIMPLE SAFE VERSION -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:42px 5px;box-sizing:border-box;">
+            <div style="display:inline-block;vertical-align:middle;width:54%;min-width:331px;box-sizing:border-box;padding:8px 14px;text-align:left;">
+                <h2 style="font-size:36px;line-height:1.2;font-weight:900;color:#1f2933;margin:0 0 18px;letter-spacing:1px;">
+                    <span style="background:#b0137b;border-radius:8px;">BOOK</span> YOUR<br/>PERSONALIZED DEMO
+                </h2>
+                <p style="font-size:17px;line-height:1.8;color:#8B4E7B;font-weight:800;margin:0 0 24px;">We are
+                    available 24/7 for your service.<br/>Contact Us Today!</p>
+                <div style="margin-top:20px;">
+                <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+                    <img src="./asset/footer/phone_icon.png" alt="Call"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    USA - +1 407 574 8760
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;">
+                  <img src="./asset/footer/phone_icon.png" alt="Call"
+                       style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                   IND - +91 98433 77486
+                </span>
+                    <span style="display:block;font-size:14px;line-height:1.8;color:#75499a;font-weight:800;margin:6px 0;word-break:break-word;">
+                    <img src="./asset/footer/mail_icon.png" alt="Mail"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <a href="mailto:odooapps@mindsparktechnologies.com" style="color:#75499a;text-decoration:none;">odooapps@mindsparktechnologies.com</a>
+                </span>
+                </div>
+            </div>
+            <div style="display:inline-block;vertical-align:middle;width:45%;min-width:280px;box-sizing:border-box;padding:8px 14px;text-align:center;">
+                <a href="tel:+919843377486"
+                   style="display:block;background:#b0137b;color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #b0137b;transition:all 0.3s ease;background-image:linear-gradient(135deg,#b0137b 0%,#7a0f60 100%);">
+                    <img src="./asset/footer/phone_icon.png" alt="Call"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <span style="vertical-align:middle;">CALL US</span>
+                </a>
+                <a href="mailto:odooapps@mindsparktechnologies.com"
+                   style="display:block;background:#8d3f7b;color:#ffffff;text-decoration:none;font-size:16px;font-weight:800;border-radius:28px;padding:14px 28px;margin:10px auto;text-align:center;width:220px;box-sizing:border-box;border:1px solid #8d3f7b;transition:all 0.3s ease;background-image:linear-gradient(135deg,#8d3f7b 0%,#5e2a52 100%);">
+                    <img src="./asset/footer/mail_icon.png" alt="Mail"
+                         style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-right:10px;border:0;">
+                    <span style="vertical-align:middle;">SEND MAIL</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div style="width:100%;margin:24px 0 46px;text-align:center;box-sizing:border-box;">
+        <h2 style="font-size:34px;line-height:1.25;font-weight:800;color:#333;margin:0 0 30px;">What Makes Us The Best
+            Choice</h2>
+        <div style="text-align:center;">
+            <div style="display:inline-block;vertical-align:top;width:24.5%;min-width:210px;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">APPS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Custom Odoo apps
+                        for smarter workflows.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">150+</div>
+                </div>
+            </div>
+            <div style="display:inline-block;vertical-align:top;width:24.5%;min-width:210px;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">CLIENTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Trusted by
+                        businesses worldwide.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">530+</div>
+                </div>
+            </div>
+            <div style="display:inline-block;vertical-align:top;width:24.5%;min-width:210px;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PRODUCTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Ready-to-use,
+                        high-quality modules.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">40+</div>
+                </div>
+            </div>
+            <div style="display:inline-block;vertical-align:top;width:24.5%;min-width:210px;box-sizing:border-box;padding:10px;text-align:left;">
+                <div style="border:1px solid #e6e6e6;border-radius:15px;background:#fff;background-image:linear-gradient(180deg,rgba(176,19,123,0.14) 0%,#fff 65%);padding:24px;box-sizing:border-box;min-height:190px;">
+                    <h3 style="font-size:21px;font-weight:900;color:#222;margin:0 0 10px;">PROJECTS</h3>
+                    <p style="font-size:14px;line-height:1.65;font-weight:700;color:#b0137b;margin:0;">Delivered with
+                        precision and expertise.</p>
+                    <div style="font-size:42px;font-weight:900;color:#a11d7d;margin-top:28px;">750+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</html>

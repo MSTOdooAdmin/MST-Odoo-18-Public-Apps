@@ -1,0 +1,11 @@
+
+/* Page Border */
+.page_border{
+    border: 2px solid #8D8D8D;
+    position: fixed;
+    z-index: 9999;
+    height: 350mm;
+    left: 15px;
+    top:0;
+    width:97%
+}

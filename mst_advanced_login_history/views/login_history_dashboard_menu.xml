@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_advanced_login_history_dashboard" model="ir.actions.client">
+        <field name="name">Login History Dashboard</field>
+        <field name="tag">mst_advanced_login_history.dashboard</field>
+    </record>
+
+    <menuitem id="menu_login_history_root" name="Login History" sequence="100"
+              web_icon="mst_advanced_login_history,static/description/icon.png"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_advanced_login_history_dashboard" name="Dashboard"
+              parent="menu_login_history_root" action="action_advanced_login_history_dashboard"
+              sequence="10" groups="base.group_system"/>
+    <menuitem id="menu_login_history" name="Login Logs"
+              parent="menu_login_history_root" action="action_login_history"
+              sequence="20" groups="base.group_system"/>
+    <menuitem id="menu_login_failed_history" name="Failed Login Logs"
+              parent="menu_login_history_root" action="action_login_failed_history"
+              sequence="30" groups="base.group_system"/>
+    <menuitem id="menu_mst_user_activity_log" name="Advanced Audit Logs"
+              parent="menu_login_history_root" action="action_mst_user_activity_log"
+              sequence="40" groups="base.group_system"/>
+    <menuitem id="menu_mst_configured_model_activity_log" name="Model Audit Logs"
+              parent="menu_login_history_root" action="action_mst_configured_model_activity_log"
+              sequence="50" groups="base.group_system"/>
+    <menuitem id="menu_mst_activity_log_config_root" name="Configuration"
+              parent="menu_login_history_root" sequence="90" groups="base.group_system"/>
+    <menuitem id="menu_mst_activity_log_model_config" name="Model Audit Configuration"
+              parent="menu_mst_activity_log_config_root" action="action_mst_activity_log_model_config"
+              sequence="10" groups="base.group_system"/>
+</odoo>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mst_advanced_login_history.AdvancedLoginHistoryDashboard">
+        <div class="mst_login_dashboard">
+            <header class="mst_login_hero">
+                <div class="mst_login_hero_left">
+                    <span class="mst_login_logo_wrap">
+                        <img src="/mst_advanced_login_history/static/description/icon.png"
+                             alt="Login History" width="40" height="40"
+                             class="mst_login_logo"/>
+                    </span>
+                    <div class="mst_login_title_block">
+                        <h1>Login History</h1>
+                        <p>Smart tracking. Better security. Full visibility.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn mst_login_refresh" t-on-click="this.refreshDashboard">
+                    <img src="/mst_advanced_login_history/static/src/img/icons/refresh-purple.svg" alt="" class="mst_login_button_icon"/>
+                    Refresh
+                </button>
+            </header>
+
+            <t t-if="this.state.loading">
+                <div class="mst_login_state">
+                    <i class="fa fa-spinner fa-spin"/>
+                    <span>Loading login history dashboard…</span>
+                </div>
+            </t>
+
+            <t t-elif="this.state.error">
+                <div class="mst_login_state mst_login_state_error">
+                    <i class="fa fa-exclamation-triangle"/>
+                    <strong>Dashboard data could not be loaded.</strong>
+                    <span>Please retry or check the Odoo server log.</span>
+                    <button type="button" class="btn btn-primary" t-on-click="this.refreshDashboard">Retry</button>
+                </div>
+            </t>
+
+            <t t-else="">
+                <section class="mst_login_kpis">
+                    <t t-foreach="this.state.cards" t-as="card" t-key="card.title">
+                        <button type="button"
+                                t-att-class="'mst_login_kpi ' + card.class + (card.model ? ' is_clickable' : '')"
+                                t-on-click="() => this.openCard(card)">
+                            <span class="mst_login_kpi_icon">
+                                <span t-out="card.icon"/>
+                            </span>
+                            <span class="mst_login_kpi_text">
+                                <small t-out="card.title"/>
+                                <strong t-out="card.value"/>
+                                <span t-out="card.subtitle"/>
+                            </span>
+                        </button>
+                    </t>
+                </section>
+
+                <section class="mst_login_content_grid">
+                    <div class="mst_login_panel mst_login_activity_panel">
+                        <div class="mst_login_panel_header">
+                            <div>
+                                <h2>Recent Login Activities</h2>
+                                <p>Successful login, logout and failed attempts</p>
+                            </div>
+                            <span class="mst_login_count"><t t-out="this.state.rows.length"/> recent</span>
+                        </div>
+
+                        <div class="mst_login_table_scroll d-none d-lg-block">
+                            <table class="table mst_login_table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Login Time</th>
+                                        <th>Status</th>
+                                        <th>IP Address</th>
+                                        <th>Location</th>
+                                        <th>Browser / Device</th>
+                                        <th>Session Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="this.state.rows.length">
+                                        <t t-foreach="this.state.rows" t-as="row" t-key="row.id">
+                                            <tr class="mst_login_row" t-on-click="() => this.openLoginRecord(row)">
+                                                <td>
+                                                    <div class="mst_login_user">
+                                                        <span class="mst_login_avatar" title="User">
+                                                            <img src="/mst_advanced_login_history/static/src/img/icons/user.svg" alt="User" class="mst_login_avatar_img"/>
+                                                        </span>
+                                                        <span>
+                                                            <strong t-out="row.user"/>
+                                                            <small t-out="row.email"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="mst_login_inline_info mst_login_time">
+                                                        <span class="mst_login_compact_icon time" title="Login Time">
+                                                            <img src="/mst_advanced_login_history/static/src/img/icons/clock-white.svg" alt=""/>
+                                                        </span>
+                                                        <span t-out="row.login_time"/>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span t-att-class="'mst_login_badge ' + row.status_class">
+                                                        <span class="mst_login_status_symbol" aria-hidden="true">
+                                                            <t t-if="row.status_class === 'success'">✓</t>
+                                                            <t t-elif="row.status_class === 'failed'">!</t>
+                                                            <t t-else="">↪</t>
+                                                        </span>
+                                                        <span t-out="row.status"/>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="mst_login_inline_info">
+                                                        <span class="mst_login_compact_icon ip" title="IP Address">
+                                                            <img src="/mst_advanced_login_history/static/src/img/icons/ip-white.svg" alt=""/>
+                                                        </span>
+                                                        <span class="mst_login_ip" t-out="row.ip_address"/>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="mst_login_location_cell">
+                                                        <strong>
+                                                            <span class="mst_login_location_pin" title="Location">
+                                                                <img src="/mst_advanced_login_history/static/src/img/icons/location-purple.svg" alt="Location"/>
+                                                            </span>
+                                                            <span class="mst_login_flag" t-out="row.country_flag"/>
+                                                            <span t-out="row.location_line"/>
+                                                        </strong>
+                                                        <small t-out="row.location"/>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="mst_login_device">
+                                                        <span class="mst_login_brand_icon" t-att-title="row.browser_name || 'Browser'">
+                                                            <img t-att-src="row.browser_icon_url" t-att-alt="row.browser_name || 'Browser'"/>
+                                                        </span>
+                                                        <span class="mst_login_device_name" t-out="row.browser_name"/>
+
+                                                        <t t-if="row.os_name">
+                                                            <span class="mst_login_brand_icon os" t-att-title="row.os_name || 'Operating System'">
+                                                                <img t-att-src="row.os_icon_url" t-att-alt="row.os_name || 'Operating System'"/>
+                                                            </span>
+                                                            <span class="mst_login_device_name" t-out="row.os_name"/>
+                                                        </t>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="mst_login_inline_info mst_login_duration">
+                                                        <span class="mst_login_compact_icon duration" title="Session Duration">
+                                                            <img src="/mst_advanced_login_history/static/src/img/icons/hourglass.svg" alt=""/>
+                                                        </span>
+                                                        <span t-out="row.session_duration"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="7" class="mst_login_empty">No login history found.</td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mst_login_mobile_list d-lg-none">
+                            <t t-if="this.state.rows.length">
+                                <t t-foreach="this.state.rows" t-as="row" t-key="row.id">
+                                    <button type="button" class="mst_login_mobile_item" t-on-click="() => this.openLoginRecord(row)">
+                                        <div class="mst_login_mobile_top">
+                                            <div class="mst_login_user">
+                                                <span class="mst_login_avatar" title="User">
+                                                    <img src="/mst_advanced_login_history/static/src/img/icons/user.svg" alt="User" class="mst_login_avatar_img"/>
+                                                </span>
+                                                <span>
+                                                    <strong t-out="row.user"/>
+                                                    <small t-out="row.login_time"/>
+                                                </span>
+                                            </div>
+                                            <span t-att-class="'mst_login_badge ' + row.status_class">
+                                                        <span class="mst_login_status_symbol" aria-hidden="true">
+                                                            <t t-if="row.status_class === 'success'">✓</t>
+                                                            <t t-elif="row.status_class === 'failed'">!</t>
+                                                            <t t-else="">↪</t>
+                                                        </span>
+                                                        <span t-out="row.status"/>
+                                                    </span>
+                                        </div>
+                                        <div class="mst_login_mobile_meta">
+                                            <span><span class="mst_login_mobile_glyph"><img src="/mst_advanced_login_history/static/src/img/icons/ip-purple.svg" alt="IP"/></span><span t-out="row.ip_address"/></span>
+                                            <span><span class="mst_login_mobile_glyph"><img src="/mst_advanced_login_history/static/src/img/icons/location-purple.svg" alt="Location"/></span><span><t t-out="row.location_line"/></span></span>
+                                            <span class="mst_login_mobile_device">
+                                                <span class="mst_login_brand_icon">
+                                                    <img t-att-src="row.browser_icon_url" t-att-alt="row.browser_name || 'Browser'"/>
+                                                </span>
+                                                <span t-out="row.browser_name"/>
+                                                <t t-if="row.os_name">
+                                                    <span class="mst_login_brand_icon os">
+                                                        <img t-att-src="row.os_icon_url" t-att-alt="row.os_name || 'Operating System'"/>
+                                                    </span>
+                                                    <span t-out="row.os_name"/>
+                                                </t>
+                                            </span>
+                                            <span><span class="mst_login_mobile_glyph"><img src="/mst_advanced_login_history/static/src/img/icons/clock-purple.svg" alt="Duration"/></span><span t-out="row.session_duration"/></span>
+                                        </div>
+                                    </button>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="mst_login_empty">No login history found.</div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <aside class="mst_login_panel mst_login_location_panel">
+                        <div class="mst_login_panel_header">
+                            <div>
+                                <h2>Login Location</h2>
+                                <p>Latest tracked location</p>
+                            </div>
+                        </div>
+
+                        <t t-if="this.state.location.map_embed_url">
+                            <iframe class="mst_login_map"
+                                    t-att-src="this.state.location.map_embed_url"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"/>
+                        </t>
+                        <t t-else="">
+                            <div class="mst_login_map_empty">
+                                <img src="/mst_advanced_login_history/static/src/img/icons/location-purple.svg" alt="Location" class="mst_login_map_empty_icon"/>
+                                <strong>Location unavailable</strong>
+                                <small>Allow browser location or configure Odoo GeoIP.</small>
+                            </div>
+                        </t>
+
+                        <div class="mst_login_location_details">
+                            <div>
+                                <span class="mst_login_side_glyph" title="Location">
+                                    <img src="/mst_advanced_login_history/static/src/img/icons/location-purple.svg" alt="Location"/>
+                                </span>
+                                <span>Location</span>
+                                <strong><span t-out="this.state.location.country_flag"/> <span t-out="this.state.location.location_line || this.state.location.location || '-'"/></strong>
+                            </div>
+                            <div>
+                                <span class="mst_login_side_glyph" title="IP Address">
+                                    <img src="/mst_advanced_login_history/static/src/img/icons/ip-purple.svg" alt="IP Address"/>
+                                </span>
+                                <span>IP Address</span>
+                                <strong class="mst_login_ip" t-out="this.state.location.ip_address || '-'"/>
+                            </div>
+                            <div>
+                                <span class="mst_login_side_glyph" title="Browser and Operating System">
+                                    <img src="/mst_advanced_login_history/static/src/img/icons/device-purple.svg" alt="Browser and Device"/>
+                                </span>
+                                <span>Browser / Device</span>
+                                <strong class="mst_login_side_device_value">
+                                    <span class="mst_login_brand_icon small">
+                                        <img t-att-src="this.state.location.browser_icon_url" t-att-alt="this.state.location.browser_name || 'Browser'"/>
+                                    </span>
+                                    <span t-out="this.state.location.browser_name || '-'"/>
+                                    <t t-if="this.state.location.os_name">
+                                        <span class="mst_login_brand_icon small os">
+                                            <img t-att-src="this.state.location.os_icon_url" t-att-alt="this.state.location.os_name || 'Operating System'"/>
+                                        </span>
+                                        <span t-out="this.state.location.os_name"/>
+                                    </t>
+                                </strong>
+                            </div>
+                            <div>
+                                <span class="mst_login_side_glyph" title="First Seen">
+                                    <img src="/mst_advanced_login_history/static/src/img/icons/clock-purple.svg" alt="First Seen"/>
+                                </span>
+                                <span>First Seen</span>
+                                <strong t-out="this.state.location.login_time || '-'"/>
+                            </div>
+                        </div>
+
+                        <button t-if="this.state.location.open_url"
+                                type="button"
+                                class="btn mst_login_open_map"
+                                t-on-click="this.openMap">
+                            <img src="/mst_advanced_login_history/static/src/img/icons/location-purple.svg" alt="" class="mst_login_button_icon"/>Open Map
+                        </button>
+                    </aside>
+                </section>
+            </t>
+        </div>
+    </t>
+</templates>

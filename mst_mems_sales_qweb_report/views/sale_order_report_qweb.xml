@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="mst_mems_sales_qweb_report.sale_document">
+            <t t-call="mst_mems_sales_qweb_report.custom_sales_contract_qweb_external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                <div class="page">
+                                        <!-- ===== COMPANY HEADER =====
+                         One-row table instead of two floated divs with a fixed height:
+                         - both cells always share the same height (no gap, one straight bottom line)
+                         - the row grows with the address, so it never overlaps "Sales Order" -->
+                    <table style="width:100%;border-collapse:collapse;table-layout:fixed;background-color:#e8f0fa;border:2px solid #8D8D8D;">
+                        <tr>
+                            <!-- Logo: 30% -->
+                            <td style="width:30%;vertical-align:top;padding:4px;border:0;">
+                                <img t-if="env.company.logo"
+                                     t-att-src="image_data_uri(env.company.logo)"
+                                     style="max-height:50px;"/>
+                            </td>
+                            <!-- Company name + address: 70% (padding-left keeps the text in the same start position as before) -->
+                            <td style="width:70%;vertical-align:top;padding:4px 8px 6px 14%;border:0;font-size:14px;line-height:1.5;text-align:left;">
+                                <div>
+                                    <strong style="font-size:24px;">
+                                        <t t-out="env.company.name"/>
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <t t-out="env.company.street or ''"/>
+                                    <t t-if="env.company.street2">
+                                        ,
+                                        <t t-out="env.company.street2"/>
+                                    </t>
+                                </div>
+
+                                <div>
+                                    <t t-out="env.company.city or ''"/>
+                                    <t t-if="env.company.state_id">
+                                        ,
+                                        <t t-out="env.company.state_id.name"/>
+                                    </t>
+                                    <t t-if="env.company.zip">
+                                        -
+                                        <t t-out="env.company.zip"/>
+                                    </t>
+                                </div>
+
+                                <div>
+                                    <t t-out="env.company.country_id.name or ''"/>
+                                </div>
+
+                                <div t-if="env.company.phone">
+                                    Phone :
+                                    <t t-out="env.company.phone"/>
+                                </div>
+
+                                <div t-if="env.company.email">
+                                    Email :
+                                    <t t-out="env.company.email"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div align="center" class="col-12"
+                         style="padding:8px;border-top:0;border-bottom: 2px solid #8D8D8D;border-left: 2px solid #8D8D8D;border-right: 2px solid #8D8D8D;">
+                        <span style="font-family:Times;font-size:20px;">
+                            <t t-if="o.state != 'sale'">
+                                <b>Quotation</b>
+                            </t>
+                            <t t-if="o.state == 'sale'">
+                                <b>Sales Order</b>
+                            </t>
+                        </span>
+                    </div>
+
+                    <!-- ===== ORDER / CUSTOMER INFO =====
+                         Plain table instead of Bootstrap row/col classes, so the labels and values
+                         stay side by side even when the report CSS is not loaded by wkhtmltopdf. -->
+                    <table class="table-borderless" style="width:100%;border-collapse:collapse;table-layout:fixed;border-left:2px solid #8D8D8D;border-right:2px solid #8D8D8D;border-bottom:2px solid #8D8D8D;">
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:8px 8px 1px;font-family:Times;border:0;">
+                                <t t-if="o.state != 'sale'">Quotation No.</t>
+                                <t t-if="o.state == 'sale'">Order No.</t>
+                            </td>
+                            <td style="width:75%;vertical-align:top;padding:8px 8px 1px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                <b>:&#160;<span t-out="o.name or '-'"/></b>
+                            </td>
+                        </tr>
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:1px 8px 6px;font-family:Times;border:0;">
+                                <t t-if="o.state != 'sale'">Quotation Date.</t>
+                                <t t-if="o.state == 'sale'">Order Date.</t>
+                            </td>
+                            <td style="width:75%;vertical-align:top;padding:1px 8px 6px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                <b>:</b>&#160;<span t-out="o.date_order and o.date_order.strftime('%d.%m.%Y') or '-'"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table-borderless" style="width:100%;border-collapse:collapse;table-layout:fixed;border-left:2px solid #8D8D8D;border-right:2px solid #8D8D8D;">
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:4px 8px 1px;font-family:Times;border:0;">Name</td>
+                            <td style="width:75%;vertical-align:top;padding:4px 8px 1px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                <b>:&#160;<t t-out="o.partner_id.name or '-'"/></b>
+                            </td>
+                        </tr>
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:1px 8px;font-family:Times;border:0;">Address</td>
+                            <td style="width:75%;vertical-align:top;padding:1px 8px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                <b>:&#160;
+                                    <t t-if="o.partner_id.street"><t t-out="o.partner_id.street"/>,&#160;</t>
+                                    <t t-if="o.partner_id.street2"><t t-out="o.partner_id.street2"/>,</t>
+                                    <br/>
+                                    <t t-if="o.partner_id.city">&#160;&#160;<t t-out="o.partner_id.city"/></t>
+                                    <t t-if="o.partner_id.zip">&#160;-&#160;<t t-out="o.partner_id.zip"/>,</t>
+                                    <br/>
+                                    <t t-if="o.partner_id.state_id">&#160;&#160;<t t-out="o.partner_id.state_id.name"/>,</t>
+                                    <t t-if="o.partner_id.country_id">&#160;<t t-out="o.partner_id.country_id.name"/></t>
+                                </b>
+                            </td>
+                        </tr>
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:1px 8px;font-family:Times;border:0;">GSTIN</td>
+                            <td style="width:75%;vertical-align:top;padding:1px 8px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                <b>:&#160;<t t-out="o.partner_id.vat or '-'"/></b>
+                            </td>
+                        </tr>
+<!--                        <tr style="border:0;" t-if="'l10n_in_pan_entity_id' in o.partner_id and o.partner_id.l10n_in_pan_entity_id">-->
+<!--                            <td style="width:25%;vertical-align:top;padding:1px 8px;font-family:Times;border:0;">PAN No</td>-->
+<!--                            <td style="width:75%;vertical-align:top;padding:1px 8px;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">-->
+<!--                                <b>:&#160;<t t-out="o.partner_id.l10n_in_pan_entity_id.name"/></b>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+                        <tr style="border:0;">
+                            <td style="width:25%;vertical-align:top;padding:1px 8px 0;font-family:Times;border:0;">State</td>
+                            <td style="width:75%;vertical-align:top;padding:1px 8px 0;font-family:Times;border:0;">
+                                <!-- state | "State Code :" | code box, same positions as before -->
+                                <table class="table-borderless" style="width:100%;border-collapse:collapse;table-layout:fixed;">
+                                    <tr style="border:0;">
+                                        <td style="width:22%;vertical-align:top;padding:0;font-family:Times;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;border:0;">
+                                            <b>:&#160;<span t-out="o.partner_id.state_id.name or '-'"/></b>
+                                        </td>
+                                        <td style="width:22%;vertical-align:top;padding:0 0 0 12px;font-family:Times;border:0;">State Code&#160;:</td>
+                                        <td style="width:11%;vertical-align:top;padding:0 4px;text-align:center;font-family:Times;border-left:2px solid #8D8D8D;border-right:2px solid #8D8D8D;border-top:2px solid #8D8D8D;border-bottom:0;">
+                                            <span t-out="o.partner_id.state_id.code or '-'"/>
+                                        </td>
+                                        <td style="width:45%;padding:0;border:0;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;border-collapse:collapse;table-layout:fixed;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#222;">
+                        <colgroup>
+                            <col style="width:5.5%;"/>   <!-- Sr.No -->
+                            <col style="width:30%;"/>    <!-- Product / Service -->
+                            <col style="width:14%;"/>    <!-- QTY -->
+                            <col style="width:17.5%;"/>  <!-- Rate -->
+                            <col style="width:10%;"/>    <!-- Tax -->
+                            <col style="width:23%;"/>    <!-- Amount (wide enough for large values) -->
+                        </colgroup>
+
+                        <!-- ===== HEADER ===== -->
+                        <thead>
+                            <tr style="background-color:#e8f0fa;">
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">Sr.No</th>
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">Name of Product/Service</th>
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">QTY</th>
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">Rate</th>
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">Tax</th>
+                                <th style="border:2px solid #8D8D8D;padding:6px;text-align:center;font-weight:bold;">Amount</th>
+                            </tr>
+                        </thead>
+
+                        <!-- ===== ORDER LINES ===== -->
+                        <tbody>
+                            <t t-set="sr_no" t-value="0"/>
+                            <t t-foreach="o.order_line.filtered(lambda l: not l.display_type)" t-as="line">
+                                <t t-set="sr_no" t-value="sr_no + 1"/>
+                                <tr style="border-top:none;border-bottom:none;">
+                                    <td style="border-top:none;border-bottom:none;border-left:2px solid #8D8D8D;border-right:2px solid #8D8D8D;padding:4px 6px;text-align:center;">
+                                        <span t-out="sr_no"/>
+                                    </td>
+                                    <td style="border-top:none;border-bottom:none;border-right:2px solid #8D8D8D;padding:4px 6px;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                        <span t-field="line.product_id.name"/>
+                                    </td>
+                                    <td style="border-top:none;border-bottom:none;border-right:2px solid #8D8D8D;padding:4px 6px;text-align:right;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                        <span t-field="line.product_uom_qty"/> <span t-field="line.product_uom_id.name"/>
+                                    </td>
+                                    <td style="border-top:none;border-bottom:none;border-right:2px solid #8D8D8D;padding:4px 6px;text-align:right;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                    <td style="border-top:none;border-bottom:none;border-right:2px solid #8D8D8D;padding:4px 6px;text-align:left;">
+                                        <span t-out="', '.join(line.tax_ids.mapped('name'))"/>
+                                    </td>
+                                    <td style="border-top:none;border-bottom:none;border-right:2px solid #8D8D8D;padding:4px 6px;text-align:right;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                        <span t-field="line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <!-- ===== TOTAL ROW ===== -->
+                            <tr style="background-color:#e8f0fa;">
+                                <td style="border:2px solid #8D8D8D;padding:6px;"></td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;text-align:left;font-weight:bold;">Total</td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;text-align:right;font-weight:bold;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <span t-out="sum(o.order_line.mapped('product_uom_qty'))" t-options="{'widget': 'float', 'precision': 2}"/>
+                                </td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;"></td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;"></td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;text-align:right;font-weight:bold;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <span t-field="o.amount_untaxed"/>
+                                </td>
+                            </tr>
+
+                            <!-- ===== AMOUNT IN WORDS | TOTAL BEFORE TAX ===== -->
+                            <!-- words = Sr.No + Product + QTY | label = Rate + Tax | value = Amount -->
+                            <tr>
+                                <td colspan="3" style="border:2px solid #8D8D8D;padding:6px;vertical-align:top;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <b>Amount in Words:</b>
+                                    <span t-out="o.currency_id.amount_to_text(o.amount_total)"/>
+                                </td>
+                                <td colspan="2" style="border:2px solid #8D8D8D;padding:6px;">Total Amount Before Tax :</td>
+                                <td style="border-top:2px solid #8D8D8D;border-right:2px solid #8D8D8D;padding:6px;text-align:right;font-weight:bold;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <span t-field="o.amount_untaxed"/>
+                                </td>
+                            </tr>
+
+                            <!-- ===== TERMS | SEAL | TAX AMOUNT ===== -->
+                            <!-- terms = Sr.No + Product | seal = QTY | label = Rate + Tax | value = Amount -->
+                            <tr>
+                                <td colspan="2" rowspan="3" style="border:2px solid #8D8D8D;padding:6px;vertical-align:top;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <b>Terms and Conditions:</b>
+                                    <div style="margin-top:40px;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;" t-field="o.note"/>
+                                </td>
+                                <td rowspan="3" style="border:2px solid #8D8D8D;padding:6px;vertical-align:bottom;text-align:center;">
+                                    Seal
+                                </td>
+                                <td colspan="2" style="border:2px solid #8D8D8D;padding:6px;">Tax Amount :</td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;text-align:right;font-weight:bold;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <span t-field="o.amount_tax"/>
+                                </td>
+                            </tr>
+
+                            <!-- ===== TOTAL AFTER TAX ===== -->
+                            <tr>
+                                <td colspan="2" style="border:2px solid #8D8D8D;padding:6px;">Total Amount After Tax :</td>
+                                <td style="border:2px solid #8D8D8D;padding:6px;text-align:right;font-weight:bold;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;white-space:normal;">
+                                    <span t-field="o.amount_total"/>
+                                </td>
+                            </tr>
+
+                            <!-- ===== CERTIFICATION (Rate + Tax + Amount) ===== -->
+                            <tr>
+                                <td colspan="3" style="border:2px solid #8D8D8D;padding:4px;vertical-align:top;">
+                                    Tax Payable on Reverse Charge:<br/>
+                                    Certified that the particulars given above are true and correct<br/><br/>
+                                    For, <b t-field="o.company_id.name"/><br/><br/><br/><br/><br/><br/>
+                                    <b>Authorised Signatory</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="mst_qweb_report_esales_contract">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="mst_mems_sales_qweb_report.sale_document" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
