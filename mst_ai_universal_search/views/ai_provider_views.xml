@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_provider_list" model="ir.ui.view">
+        <field name="name">ai.provider.list</field>
+        <field name="model">ai.provider</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="provider"/>
+                <field name="model_name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_provider_form" model="ir.ui.view">
+        <field name="name">ai.provider.form</field>
+        <field name="model">ai.provider</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection"
+                            type="object"
+                            string="Test Connection"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="provider"/>
+                            <field name="model_name"
+                                   placeholder="gpt-4o / claude-sonnet-4-5 / gemini-2.5-flash / deepseek-chat"/>
+                            <field name="base_url"
+                                   invisible="provider != 'openai_compatible'"
+                                   placeholder="https://api.deepseek.com/chat/completions"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="api_key" password="True"/>
+                            <field name="temperature"/>
+                            <field name="max_tokens"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_provider" model="ir.actions.act_window">
+        <field name="name">AI Providers</field>
+        <field name="res_model">ai.provider</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

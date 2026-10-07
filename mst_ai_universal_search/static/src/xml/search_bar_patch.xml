@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mst_ai_universal_search.SearchBarPatch"
+       t-inherit="web.SearchBar"
+       t-inherit-mode="extension">
+        <xpath expr="//input[contains(@class, 'o_searchview_input')]" position="attributes">
+            <attribute name="t-on-keydown">this.onAiSearchKeydown</attribute>
+        </xpath>
+    </t>
+</templates>
