@@ -29,7 +29,7 @@ class ResConfigSettings(models.TransientModel):
     mst_dynamic_brand_name = fields.Char(
         string="Dynamic Brand Name",
         config_parameter="mst_dynamic_odoo_branding.brand_name",
-        default="Mind Spark Technologies",
+        default="MindSpark Technologies",
         help="Name used in the browser tab title.",
     )
     mst_powered_by_prefix = fields.Char(
@@ -42,7 +42,7 @@ class ResConfigSettings(models.TransientModel):
     mst_powered_by_name = fields.Char(
         string="Powered By Display Name",
         config_parameter="mst_dynamic_odoo_branding.powered_by_name",
-        help="Optional name displayed after Powered By Text, e.g. Mind Spark Technologies.",
+        help="Optional name displayed after Powered By Text, e.g. MindSpark Technologies.",
     )
     mst_url_prefix = fields.Char(
         string="URL Prefix",

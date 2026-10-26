@@ -7,7 +7,7 @@ Replace the module folder, restart Odoo, and upgrade Dynamic Odoo Branding in Ap
 In Settings → Dynamic Branding:
 
 - **Powered By Text** defaults to `Powered by`.
-- **Powered By Display Name** is optional. Enter `Mind Spark Technologies` to display `Powered by Mind Spark Technologies` with the default text.
+- **Powered By Display Name** is optional. Enter `MindSpark Technologies` to display `Powered by MindSpark Technologies` with the default text.
 - Existing custom Powered By Text is preserved. If it already contains your company name, leave Display Name empty or reset the text to `Powered by` before adding the name.
 - Blank text falls back to `Powered by` on login, website/portal and newly generated emails. Existing emails are unchanged.
 - **Show Manage Databases** shows/hides the link beneath the login form in standard and Website layouts. Click Save and reload the login page to apply.

@@ -3,7 +3,7 @@
     "summary": "Show your brand instead of Odoo in the browser tab, the login page and the URL",
     "version": "19.0.1.0.0",
     "category": "Tools",
-    "author": "Mind Spark Technologies",
+    "author": "MindSpark Technologies",
     "website": "https://mindsparktechnologies.com",
     "license": "LGPL-3",
     "depends": ["web", "mail"],

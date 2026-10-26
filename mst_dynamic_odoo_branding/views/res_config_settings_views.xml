@@ -17,13 +17,13 @@
                             </div>
                         </setting>
                         <setting string="Dynamic Brand Name" help="Replace the default Odoo browser tab title.">
-                            <field name="mst_dynamic_brand_name" placeholder="e.g. Mind Spark Technologies"/>
+                            <field name="mst_dynamic_brand_name" placeholder="e.g. MindSpark Technologies"/>
                         </setting>
                         <!--<setting string="Powered By Text" help="Default text: Powered by. Add an optional display name below. Save to apply to login, website and new emails.">
                             <field name="mst_powered_by_prefix" placeholder="Powered by"/>
                         </setting>-->
-                        <setting string="Powered By Display Name" help="Optional. Example result: Powered by Mind Spark Technologies. Leave empty to display only Powered By Text.">
-                            <field name="mst_powered_by_name" placeholder="e.g. Mind Spark Technologies"/>
+                        <setting string="Powered By Display Name" help="Optional. Example result: Powered by MindSpark Technologies. Leave empty to display only Powered By Text.">
+                            <field name="mst_powered_by_name" placeholder="e.g. MindSpark Technologies"/>
                         </setting>
                         <setting string="URL Prefix" help="Show this name instead of 'odoo' in the backend URLs, e.g. /mindspark/discuss. Leave empty to keep /odoo.">
                             <field name="mst_url_prefix" placeholder="e.g. mindspark"/>
