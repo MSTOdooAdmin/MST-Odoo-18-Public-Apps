@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_dynamic_branding" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.dynamic.branding</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Dynamic Branding" name="mst_dynamic_odoo_branding" groups="base.group_system">
+                    <block title="Browser &amp; Powered By Branding" name="mst_dynamic_branding_block">
+                        <setting string="Favicon" help="Browser tab icon for the backend and login page. Also used on websites that still have Odoo's default favicon. Use a small square image (PNG, ICO or SVG, up to 1 MB).">
+                            <field name="mst_favicon" widget="image" class="oe_avatar" options="{'size': [48, 48]}"/>
+                            <field name="mst_favicon_website_warning" invisible="1"/>
+                            <div class="alert alert-warning mt-2 mb-0" role="alert" invisible="not mst_favicon_website_warning">
+                                <i class="fa fa-exclamation-triangle me-1"/>
+                                <field name="mst_favicon_website_warning" readonly="1" class="d-inline"/>
+                            </div>
+                        </setting>
+                        <setting string="Dynamic Brand Name" help="Replace the default Odoo browser tab title.">
+                            <field name="mst_dynamic_brand_name" placeholder="e.g. Mind Spark Technologies"/>
+                        </setting>
+                        <!--<setting string="Powered By Text" help="Default text: Powered by. Add an optional display name below. Save to apply to login, website and new emails.">
+                            <field name="mst_powered_by_prefix" placeholder="Powered by"/>
+                        </setting>-->
+                        <setting string="Powered By Display Name" help="Optional. Example result: Powered by Mind Spark Technologies. Leave empty to display only Powered By Text.">
+                            <field name="mst_powered_by_name" placeholder="e.g. Mind Spark Technologies"/>
+                        </setting>
+                        <setting string="URL Prefix" help="Show this name instead of 'odoo' in the backend URLs, e.g. /mindspark/discuss. Leave empty to keep /odoo.">
+                            <field name="mst_url_prefix" placeholder="e.g. mindspark"/>
+                        </setting>
+                        <setting string="Show Manage Databases" help="Show or hide the link on standard and Website login pages after saving. Server database-manager restrictions still apply.">
+                            <field name="mst_show_manage_databases"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

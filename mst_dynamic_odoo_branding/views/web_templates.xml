@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Replace the default web page title with the configured brand name. -->
+    <template id="web_layout_dynamic_title" inherit_id="web.layout" name="Dynamic Browser Title">
+        <xpath expr="//title" position="replace">
+            <t t-set="mst_brand_name" t-value="request.env['ir.config_parameter'].sudo().get_param('mst_dynamic_odoo_branding.brand_name') or request.env.company.name or 'Odoo'"/>
+            <title t-esc="mst_brand_name"/>
+        </xpath>
+    </template>
+
+    <!-- Replace Powered by Odoo on the login page with the configured text and optional display name. -->
+    <template id="web_login_layout_dynamic_powered_by" inherit_id="web.login_layout" name="Dynamic Powered By">
+        <xpath expr="//a[contains(@href, 'odoo.com') and contains(., 'Powered by')]" position="replace">
+            <t t-set="mst_powered_by_text" t-value="request.env['ir.http']._mst_powered_by_text()"/>
+            <span class="text-muted" t-esc="mst_powered_by_text"/>
+        </xpath>
+    </template>
+
+
+    <!-- The Website app replaces web.login_layout, so keep the managed link
+         with the shared login form instead of the replaceable layout. -->
+    <template id="web_login_layout_manage_database_visibility" inherit_id="web.login_layout" name="Dynamic Manage Databases Visibility">
+        <xpath expr="//t[@t-if='not disable_database_manager']" position="replace"/>
+    </template>
+    <template id="web_login_manage_database_link" inherit_id="web.login" name="Manage Databases on Both Login Layouts">
+        <xpath expr="//form" position="after">
+            <div class="text-center small mt-3 mb-3"
+                 t-if="not disable_database_manager and request.env['ir.config_parameter'].sudo().get_param('mst_dynamic_odoo_branding.show_manage_databases', 'True') == 'True'">
+                <a href="/web/database/manager">Manage Databases</a>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Dynamic URL prefix: expose the configured prefix to static/src/js/url_prefix.js -->
+    <template id="webclient_bootstrap_url_prefix" inherit_id="web.webclient_bootstrap" name="Dynamic URL Prefix">
+        <xpath expr="//t[@t-set='head_web']/script[1]" position="after">
+            <t t-set="mst_url_prefix" t-value="request.env['ir.config_parameter'].sudo().get_param('mst_dynamic_odoo_branding.url_prefix') or ''"/>
+            <script type="text/javascript">odoo.__mst_url_prefix__ = <t t-out="json.dumps(mst_url_prefix)"/>;</script>
+        </xpath>
+    </template>
+
+    <!-- Website footer (and portal pages): web.brand_promotion_message is what
+         website.brand_promotion calls, so no dependency on the Website app is needed.
+         Uses the same Powered By Text and fallback as the login footer. -->
+    <template id="brand_promotion_message_dynamic" inherit_id="web.brand_promotion_message" name="Dynamic Powered By (website and portal)">
+        <xpath expr="//t[@t-out][contains(@t-out, 'final_message')]" position="replace">
+            <t t-set="mst_powered_by_text" t-value="request.env['ir.http']._mst_powered_by_text()"/>
+            <t t-out="mst_powered_by_text"/>
+        </xpath>
+    </template>
+
+    <!-- Favicon: the branding favicon in the backend and on the login page; on a website only
+         when that website still has Odoo's default favicon (otherwise it keeps its own). -->
+    <template id="layout_dynamic_favicon" inherit_id="web.layout" name="Dynamic Branding Favicon">
+        <xpath expr="//link[@rel='shortcut icon']" position="replace">
+            <t t-set="mst_favicon_url" t-value="env['ir.http']._mst_favicon_url(website)"/>
+            <link type="image/x-icon" rel="shortcut icon" t-att-href="mst_favicon_url or x_icon or '/web/static/img/favicon.ico'"/>
+        </xpath>
+    </template>
+
+</odoo>
