@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Advanced User Audit Log and Login History",
-    "summary": "Odoo 19 Login History, User Activity Audit, Advanced Logs, Model Logs, Session and Location Monitoring",
+    "summary": "Odoo 18 Login History, User Activity Audit, Advanced Logs, Model Logs, Session and Location Monitoring",
 
     "description": """
         Advanced  User Audit Log and Login History
@@ -9,7 +9,7 @@
         
         Overview
         --------
-        Advanced Login History is an Odoo 19 module that helps administrators monitor user login sessions, failed login attempts, logout history, user activity logs, model-wise logs, browser, device, IP address, and location tracking.
+        Advanced Login History is an Odoo 18 module that helps administrators monitor user login sessions, failed login attempts, logout history, user activity logs, model-wise logs, browser, device, IP address, and location tracking.
         
         This module improves Odoo security visibility by recording every user session and important user activity with useful audit details such as login time, logout time, session duration, browser, operating system, IP address, country, city, latitude, longitude, model name, record name, action type, and before/after changes.
         
@@ -38,7 +38,7 @@
         - Show sessions and activity logs inside user form
         - Kill all active sessions from user form
         - Admin-friendly access monitoring
-        - Fully compatible with Odoo 19
+        - Fully compatible with Odoo 18
         
         Benefits
         --------
@@ -58,7 +58,7 @@
     "website": "https://mindsparktechnologies.com",
     "maintainer": "MindSpark Technologies",
     "category": "Administration",
-    "version": "19.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "LGPL-3",
 
     "depends": [
