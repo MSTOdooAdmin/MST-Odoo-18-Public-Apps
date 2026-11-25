@@ -318,6 +318,56 @@ class LoginHistory(models.Model):
             )
 
         return geo_data
+    @api.model
+    def create_login_record_from_values(self, user, request_values):
+        if not user:
+            return False
+
+        ip_address = request_values.get("ip_address")
+        latitude = request_values.get("latitude")
+        longitude = request_values.get("longitude")
+
+        location_source = False
+        geo_data = {}
+
+        if latitude and longitude:
+            geo_data = self._get_reverse_geo_location_data(latitude, longitude)
+            location_source = "browser"
+        else:
+            geo_data = self._get_ip_geo_location_data(ip_address)
+            latitude = geo_data.get("latitude")
+            longitude = geo_data.get("longitude")
+            location_source = "ip" if latitude and longitude else False
+
+        old_records = self.sudo().search([
+            ("user_id", "=", user.id),
+            ("status", "=", "active"),
+        ])
+
+        if old_records:
+            old_records.write({
+                "logout_time": fields.Datetime.now(),
+                "status": "logout",
+            })
+
+        return self.sudo().create({
+            "user_id": user.id,
+            "login_time": fields.Datetime.now(),
+            "logout_time": False,
+            "ip_address": ip_address,
+            "browser": request_values.get("browser"),
+            "operating_system": request_values.get("operating_system"),
+            "user_agent": request_values.get("user_agent"),
+            "session_id": request_values.get("session_id"),
+            "country": geo_data.get("country"),
+            "region": geo_data.get("region"),
+            "city": geo_data.get("city"),
+            "latitude": str(latitude or ""),
+            "longitude": str(longitude or ""),
+            "full_location": geo_data.get("full_location"),
+            "location_source": location_source,
+            "status": "active",
+        })    
 
     @api.model
     def create_login_record(self, user):

@@ -82,35 +82,77 @@
     </record>
 
     <record id="view_login_history_search" model="ir.ui.view">
-        <field name="name">login.history.search</field>
-        <field name="model">login.history</field>
-        <field name="arch" type="xml">
-            <search string="Login History">
-                <field name="user_id"/>
-                <field name="ip_address"/>
-                <field name="city"/>
-                <field name="region"/>
-                <field name="country"/>
-                <field name="status"/>
-                <field name="location_source"/>
+    <field name="name">login.history.search</field>
+    <field name="model">login.history</field>
+    <field name="arch" type="xml">
+        <search string="Login History">
 
-                <filter name="active_sessions" string="Active Sessions" domain="[('status','=','active')]"/>
-                <filter name="logout_sessions" string="Logout Sessions" domain="[('status','=','logout')]"/>
-                <filter name="browser_location" string="Browser Location" domain="[('location_source','=','browser')]"/>
-                <filter name="ip_location" string="IP Location" domain="[('location_source','=','ip')]"/>
+            <!-- Searchable Fields -->
+            <field name="user_id"/>
+            <field name="ip_address"/>
+            <field name="city"/>
+            <field name="region"/>
+            <field name="country"/>
+            <field name="status"/>
+            <field name="location_source"/>
 
-                <group expand="0" string="Group By">
-                    <filter name="group_by_user" string="User" context="{'group_by': 'user_id'}"/>
-                    <filter name="group_by_status" string="Status" context="{'group_by': 'status'}"/>
-                    <filter name="group_by_country" string="Country" context="{'group_by': 'country'}"/>
-                    <filter name="group_by_region" string="Region" context="{'group_by': 'region'}"/>
-                    <filter name="group_by_city" string="City" context="{'group_by': 'city'}"/>
-                    <filter name="group_by_location_source" string="Location Source" context="{'group_by': 'location_source'}"/>
-                    <filter name="group_by_login_date" string="Login Date" context="{'group_by': 'login_time:day'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
+            <separator/>
+
+            <!-- Filters -->
+            <filter name="active_sessions"
+                    string="Active Sessions"
+                    domain="[('status', '=', 'active')]"/>
+
+            <filter name="logout_sessions"
+                    string="Logout Sessions"
+                    domain="[('status', '=', 'logout')]"/>
+
+            <separator/>
+
+            <filter name="browser_location"
+                    string="Browser Location"
+                    domain="[('location_source', '=', 'browser')]"/>
+
+            <filter name="ip_location"
+                    string="IP Location"
+                    domain="[('location_source', '=', 'ip')]"/>
+
+            <separator/>
+
+            <!-- Group By -->
+            <group name="group_by">
+                <filter name="group_by_user"
+                        string="User"
+                        context="{'group_by': 'user_id'}"/>
+
+                <filter name="group_by_status"
+                        string="Status"
+                        context="{'group_by': 'status'}"/>
+
+                <filter name="group_by_country"
+                        string="Country"
+                        context="{'group_by': 'country'}"/>
+
+                <filter name="group_by_region"
+                        string="Region"
+                        context="{'group_by': 'region'}"/>
+
+                <filter name="group_by_city"
+                        string="City"
+                        context="{'group_by': 'city'}"/>
+
+                <filter name="group_by_location_source"
+                        string="Location Source"
+                        context="{'group_by': 'location_source'}"/>
+
+                <filter name="group_by_login_date"
+                        string="Login Date"
+                        context="{'group_by': 'login_time:day'}"/>
+            </group>
+
+        </search>
+    </field>
+</record>
 
     <record id="action_login_history" model="ir.actions.act_window">
         <field name="name">Login History</field>
@@ -195,33 +237,65 @@
     </record>
 
     <record id="view_login_failed_history_search" model="ir.ui.view">
-        <field name="name">login.failed.history.search</field>
-        <field name="model">login.failed.history</field>
-        <field name="arch" type="xml">
-            <search string="Failed Login History">
-                <field name="login"/>
-                <field name="ip_address"/>
-                <field name="city"/>
-                <field name="region"/>
-                <field name="country"/>
-                <field name="reason"/>
-                <field name="location_source"/>
+    <field name="name">login.failed.history.search</field>
+    <field name="model">login.failed.history</field>
+    <field name="arch" type="xml">
+        <search string="Failed Login History">
 
-                <filter name="browser_location" string="Browser Location" domain="[('location_source','=','browser')]"/>
-                <filter name="ip_location" string="IP Location" domain="[('location_source','=','ip')]"/>
+            <!-- Searchable Fields -->
+            <field name="login"/>
+            <field name="ip_address"/>
+            <field name="city"/>
+            <field name="region"/>
+            <field name="country"/>
+            <field name="reason"/>
+            <field name="location_source"/>
 
-                <group expand="0" string="Group By">
-                    <filter name="group_by_login" string="Login" context="{'group_by': 'login'}"/>
-                    <filter name="group_by_country" string="Country" context="{'group_by': 'country'}"/>
-                    <filter name="group_by_region" string="Region" context="{'group_by': 'region'}"/>
-                    <filter name="group_by_city" string="City" context="{'group_by': 'city'}"/>
-                    <filter name="group_by_location_source" string="Location Source" context="{'group_by': 'location_source'}"/>
-                    <filter name="group_by_attempt_date" string="Attempt Date" context="{'group_by': 'attempt_time:day'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
+            <separator/>
 
+            <!-- Filters -->
+            <filter name="browser_location"
+                    string="Browser Location"
+                    domain="[('location_source', '=', 'browser')]"/>
+
+            <filter name="ip_location"
+                    string="IP Location"
+                    domain="[('location_source', '=', 'ip')]"/>
+
+            <separator/>
+
+            <!-- Group By -->
+            <group name="group_by">
+
+                <filter name="group_by_login"
+                        string="Login"
+                        context="{'group_by': 'login'}"/>
+
+                <filter name="group_by_country"
+                        string="Country"
+                        context="{'group_by': 'country'}"/>
+
+                <filter name="group_by_region"
+                        string="Region"
+                        context="{'group_by': 'region'}"/>
+
+                <filter name="group_by_city"
+                        string="City"
+                        context="{'group_by': 'city'}"/>
+
+                <filter name="group_by_location_source"
+                        string="Location Source"
+                        context="{'group_by': 'location_source'}"/>
+
+                <filter name="group_by_attempt_date"
+                        string="Attempt Date"
+                        context="{'group_by': 'attempt_time:day'}"/>
+
+            </group>
+
+        </search>
+    </field>
+</record> 
     <record id="action_login_failed_history" model="ir.actions.act_window">
         <field name="name">Failed Login History</field>
         <field name="res_model">login.failed.history</field>

@@ -107,72 +107,83 @@
     </record>
 
     <record id="view_mst_user_activity_log_search" model="ir.ui.view">
-        <field name="name">mst.user.activity.log.search</field>
-        <field name="model">mst.user.activity.log</field>
-        <field name="arch" type="xml">
-            <search string="Advanced Logs">
-                <field name="user_id"/>
-                <field name="login"/>
-                <field name="session_id"/>
-                <field name="action_type"/>
-                <field name="module_name"/>
-                <field name="model_config_id"/>
-                <field name="model_description"/>
-                <field name="model_name"/>
-                <field name="record_id"/>
-                <field name="name"/>
-                <field name="ip_address"/>
+    <field name="name">mst.user.activity.log.search</field>
+    <field name="model">mst.user.activity.log</field>
+    <field name="arch" type="xml">
+        <search string="Advanced Logs">
 
-                <filter name="filter_create"
-                        string="Created"
-                        domain="[('action_type','=','create')]"/>
+            <!-- Searchable Fields -->
+            <field name="user_id"/>
+            <field name="login"/>
+            <field name="session_id"/>
+            <field name="action_type"/>
+            <field name="module_name"/>
+            <field name="model_config_id"/>
+            <field name="model_description"/>
+            <field name="model_name"/>
+            <field name="record_id"/>
+            <field name="name"/>
+            <field name="ip_address"/>
 
-                <filter name="filter_modify"
-                        string="Modified"
-                        domain="[('action_type','=','modify')]"/>
+            <separator/>
 
-                <filter name="filter_delete"
-                        string="Deleted"
-                        domain="[('action_type','=','delete')]"/>
+            <!-- Filters -->
+            <filter name="filter_create"
+                    string="Created"
+                    domain="[('action_type', '=', 'create')]"/>
 
-                <filter name="filter_model_logs"
-                        string="Configured Model Logs"
-                        domain="[('model_log_enabled','=',True)]"/>
+            <filter name="filter_modify"
+                    string="Modified"
+                    domain="[('action_type', '=', 'modify')]"/>
 
-                <filter name="filter_view_changes"
-                        string="View Changes"
-                        domain="[('has_view_changes','=',True)]"/>
+            <filter name="filter_delete"
+                    string="Deleted"
+                    domain="[('action_type', '=', 'delete')]"/>
 
-                <separator/>
+            <separator/>
 
-                <group expand="0" string="Group By">
-                    <filter name="group_user"
-                            string="User"
-                            context="{'group_by':'user_id'}"/>
+            <filter name="filter_model_logs"
+                    string="Configured Model Logs"
+                    domain="[('model_log_enabled', '=', True)]"/>
 
-                    <filter name="group_action"
-                            string="Action"
-                            context="{'group_by':'action_type'}"/>
+            <filter name="filter_view_changes"
+                    string="View Changes"
+                    domain="[('has_view_changes', '=', True)]"/>
 
-                    <filter name="group_module"
-                            string="Module"
-                            context="{'group_by':'module_name'}"/>
+            <separator/>
 
-                    <filter name="group_model"
-                            string="Model"
-                            context="{'group_by':'model_description'}"/>
+            <!-- Group By -->
+            <group name="group_by">
 
-                    <filter name="group_session"
-                            string="Session"
-                            context="{'group_by':'session_id'}"/>
+                <filter name="group_user"
+                        string="User"
+                        context="{'group_by': 'user_id'}"/>
 
-                    <filter name="group_date"
-                            string="Date"
-                            context="{'group_by':'performed_date:day'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
+                <filter name="group_action"
+                        string="Action"
+                        context="{'group_by': 'action_type'}"/>
+
+                <filter name="group_module"
+                        string="Module"
+                        context="{'group_by': 'module_name'}"/>
+
+                <filter name="group_model"
+                        string="Model"
+                        context="{'group_by': 'model_description'}"/>
+
+                <filter name="group_session"
+                        string="Session"
+                        context="{'group_by': 'session_id'}"/>
+
+                <filter name="group_date"
+                        string="Date"
+                        context="{'group_by': 'performed_date:day'}"/>
+
+            </group>
+
+        </search>
+    </field>
+</record>
 
     <record id="action_mst_user_activity_log" model="ir.actions.act_window">
         <field name="name">Advanced Logs</field>
@@ -182,7 +193,6 @@
     </record>
 
     
-
     <record id="action_mst_configured_model_activity_log" model="ir.actions.act_window">
         <field name="name">Model Logs</field>
         <field name="res_model">mst.user.activity.log</field>
@@ -192,9 +202,9 @@
         <field name="context">{'search_default_group_model': 1}</field>
     </record>
 
-    
+   
 
-    <record id="view_users_form_activity_audit_inherit" model="ir.ui.view">
+    <!-- <record id="view_users_form_activity_audit_inherit" model="ir.ui.view">
         <field name="name">res.users.form.activity.audit.inherit</field>
         <field name="model">res.users</field>
         <field name="inherit_id" ref="base.view_users_form"/>
@@ -249,6 +259,6 @@
             </xpath>
 
         </field>
-    </record>
+    </record> -->
 
 </odoo>

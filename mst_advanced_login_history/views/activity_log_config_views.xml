@@ -79,33 +79,42 @@
     </record>
 
     <record id="view_mst_activity_log_model_config_search" model="ir.ui.view">
-        <field name="name">mst.activity.log.model.config.search</field>
-        <field name="model">mst.activity.log.model.config</field>
-        <field name="arch" type="xml">
-            <search string="Model Log Configuration">
-                <field name="name"/>
-                <field name="model_names"/>
-                <field name="technical_model_names"/>
-                <field name="module_names"/>
+    <field name="name">mst.activity.log.model.config.search</field>
+    <field name="model">mst.activity.log.model.config</field>
+    <field name="arch" type="xml">
+        <search string="Model Log Configuration">
 
-                <filter name="active_config"
-                        string="Active"
-                        domain="[('active','=',True)]"/>
+            <!-- Searchable Fields -->
+            <field name="name"/>
+            <field name="model_names"/>
+            <field name="technical_model_names"/>
+            <field name="module_names"/>
 
-                <filter name="inactive_config"
-                        string="Archived"
-                        domain="[('active','=',False)]"/>
+            <separator/>
 
-                <separator/>
+            <!-- Filters -->
+            <filter name="active_config"
+                    string="Active"
+                    domain="[('active', '=', True)]"/>
 
-                <group expand="0" string="Group By">
-                    <filter name="group_active"
-                            string="Active"
-                            context="{'group_by':'active'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
+            <filter name="inactive_config"
+                    string="Archived"
+                    domain="[('active', '=', False)]"/>
+
+            <separator/>
+
+            <!-- Group By -->
+            <group name="group_by">
+                <filter name="group_active"
+                        string="Active Status"
+                        context="{'group_by': 'active'}"/>
+            </group>
+
+        </search>
+    </field>
+</record>
+
+   
 
     <record id="action_mst_activity_log_model_config" model="ir.actions.act_window">
         <field name="name">Model Log Configuration</field>
@@ -114,6 +123,6 @@
         <field name="search_view_id" ref="view_mst_activity_log_model_config_search"/>
     </record>
 
-   
+ 
 
 </odoo>

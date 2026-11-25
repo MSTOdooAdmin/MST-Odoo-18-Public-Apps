@@ -228,6 +228,21 @@ class MstUserActivityLogLine(models.Model):
 class BaseModelActivityAudit(models.AbstractModel):
     _inherit = "base"
 
+
+    def _audit_create_activity_log_safely(self, values):
+        try:
+            with self.env.cr.savepoint():
+                self.env["mst.user.activity.log"].sudo().with_context(
+                    skip_mst_activity_audit=True
+                ).create(values)
+        except Exception as error:
+            _logger.exception(
+                "Activity audit log creation failed safely: %s",
+                error
+            )
+
+        return True
+
     def _audit_skip_models(self):
         return {
             "mst.user.activity.log",
@@ -410,42 +425,59 @@ class BaseModelActivityAudit(models.AbstractModel):
         return False
 
     def _audit_get_model_config(self, model_name, action_type):
-        Config = self.env["mst.activity.log.model.config"].sudo()
+        try:
+            Config = self.env["mst.activity.log.model.config"].sudo()
 
-        configs = Config.search(
-            [
+            table_name = Config._table
+
+            with self.env.cr.savepoint():
+                self.env.cr.execute(
+                    "SELECT to_regclass(%s)",
+                    ("public.%s" % table_name,)
+                )
+                table_exists = self.env.cr.fetchone()[0]
+
+            if not table_exists:
+                return False
+
+            configs = Config.search([
                 ("active", "=", True),
-            ]
-        )
+            ])
 
-        parent_model_name = self._audit_get_related_parent_model(model_name)
+            parent_model_name = self._audit_get_related_parent_model(model_name)
 
-        for config in configs:
-            configured_model_names = config.model_ids.mapped("model")
+            for config in configs:
+                configured_model_names = config.model_ids.mapped("model")
 
-            matched = model_name in configured_model_names
+                matched = model_name in configured_model_names
 
-            if (
-                not matched
-                and config.include_related_line_models
-                and parent_model_name
-                and parent_model_name in configured_model_names
-            ):
-                matched = True
+                if (
+                    not matched
+                    and config.include_related_line_models
+                    and parent_model_name
+                    and parent_model_name in configured_model_names
+                ):
+                    matched = True
 
-            if not matched:
-                continue
+                if not matched:
+                    continue
 
-            if action_type == "create" and not config.track_create:
-                continue
+                if action_type == "create" and not config.track_create:
+                    continue
 
-            if action_type == "modify" and not config.track_modify:
-                continue
+                if action_type == "modify" and not config.track_modify:
+                    continue
 
-            if action_type == "delete" and not config.track_delete:
-                continue
+                if action_type == "delete" and not config.track_delete:
+                    continue
 
-            return config
+                return config
+
+        except Exception as error:
+            _logger.exception(
+                "Model log configuration check failed safely: %s",
+                error
+            )
 
         return False
 
@@ -715,8 +747,7 @@ class BaseModelActivityAudit(models.AbstractModel):
 
             self.env["mst.user.activity.log"].sudo().with_context(
                 skip_mst_activity_audit=True
-            ).create(
-                {
+            ).create({
                     "name": self._audit_get_record_name(record),
                     "user_id": self.env.user.id,
                     "login": self.env.user.login,

@@ -319,7 +319,9 @@ class AdvancedLoginHistoryDashboardController(http.Controller):
         ]).mapped("user_id").ids
 
         total_logins = LoginHistory.search_count([])
-        successful_logins = LoginHistory.search_count([])
+        successful_logins = LoginHistory.search_count([
+            ("user_id", "!=", False)
+        ])        
         failed_attempts = FailedHistory.search_count([])
         active_users = len(set(active_user_ids))
 
