@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mst_ai_voice_search.VoiceSearch">
+        <div class="o_mst_voice_root">
+            <!-- Panel -->
+            <div t-if="state.open" class="o_mst_voice_panel" role="dialog" aria-label="Voice search">
+                <div class="o_mst_voice_header">
+                    <span class="o_mst_voice_title" t-esc="tr('Voice search')"/>
+                    <span t-if="languages.length > 1" class="o_mst_voice_langs" role="group" t-att-aria-label="tr('Voice language')">
+                        <t t-foreach="languages" t-as="lang" t-key="lang.code">
+                            <button type="button" t-att-class="'o_mst_voice_lang' + (state.lang === lang.code ? ' active' : '')"
+                                    t-att-aria-pressed="state.lang === lang.code ? 'true' : 'false'"
+                                    t-on-click="() => this.setLanguage(lang.code)" t-esc="lang.label"/>
+                        </t>
+                    </span>
+                    <button type="button" class="btn btn-link o_mst_voice_close" t-att-aria-label="tr('Close')" t-on-click="close">
+                        <i class="fa fa-times"/>
+                    </button>
+                </div>
+
+                <div class="o_mst_voice_status" aria-live="polite">
+                    <t t-if="state.status === 'listening'">
+                        <span class="o_mst_voice_dot"/> <t t-esc="tr('Listening… speak now')"/>
+                    </t>
+                    <t t-elif="state.status === 'thinking'">
+                        <i class="fa fa-spinner fa-spin me-1"/> <t t-esc="tr('Searching your database…')"/>
+                    </t>
+                    <t t-elif="state.message and !(state.result and state.result.type === 'done')">
+                        <span t-att-class="state.status === 'error' ? 'text-danger' : ''" t-esc="state.message"/>
+                    </t>
+                    <t t-else="" t-esc="tr('Ask for a menu or for records, by voice or by typing.')"/>
+                </div>
+
+                <div t-if="state.interim" class="o_mst_voice_interim" t-esc="state.interim"/>
+
+                <div class="o_mst_voice_input input-group">
+                    <input t-ref="input" type="text" class="form-control" t-att-placeholder="tr('e.g. Show customers named Azure')"
+                           t-att-aria-label="tr('Your request')" t-att-value="state.text" t-on-input="onInput"
+                           t-on-keydown="onInputKeydown" t-att-disabled="state.status === 'thinking'"/>
+                    <button type="button" class="btn btn-primary" t-att-aria-label="tr('Search')" t-on-click="onSendClick"
+                            t-att-disabled="state.status === 'thinking' or !state.text">
+                        <i class="fa fa-search"/>
+                    </button>
+                    <button t-if="canListen" type="button" class="btn btn-secondary" t-on-click="onFabClick"
+                            t-att-aria-label="state.status === 'listening' ? tr('Stop listening') : tr('Speak')">
+                        <i t-att-class="state.status === 'listening' ? 'fa fa-stop' : 'fa fa-microphone'"/>
+                    </button>
+                </div>
+
+                <!-- Examples before the first request -->
+                <div t-if="!state.result and state.status !== 'thinking'" class="o_mst_voice_examples">
+                    <t t-foreach="examples" t-as="example" t-key="example_index">
+                        <button type="button" class="btn btn-sm btn-light" t-on-click="() => this.useExample(example)" t-esc="example"/>
+                    </t>
+                </div>
+
+                <!-- Records -->
+                <t t-set="result" t-value="state.result"/>
+                <div t-if="result and result.type === 'records' and result.records.length" class="o_mst_voice_results">
+                    <t t-foreach="result.records" t-as="row" t-key="row.id">
+                        <button type="button" class="o_mst_voice_row" t-on-click="() => this.openRecord(row)">
+                            <span class="o_mst_voice_row_name" t-esc="row.name"/>
+                            <span class="o_mst_voice_row_details">
+                                <t t-foreach="row.details" t-as="detail" t-key="detail_index">
+                                    <span class="o_mst_voice_detail"><t t-esc="detail.label"/>: <b t-esc="detail.value"/></span>
+                                </t>
+                            </span>
+                        </button>
+                    </t>
+                </div>
+                <div t-if="result and result.type === 'count'" class="o_mst_voice_count">
+                    <span class="o_mst_voice_count_value" t-esc="result.count"/>
+                </div>
+                <!-- Confirmation before any change -->
+                <div t-if="result and result.type === 'confirm'" t-att-class="'o_mst_voice_confirm' + (result.danger ? ' o_mst_voice_danger' : '')">
+                    <div class="o_mst_voice_confirm_title" t-esc="result.title"/>
+                    <ul t-if="result.summary.length" class="o_mst_voice_summary">
+                        <t t-foreach="result.summary" t-as="line" t-key="line_index">
+                            <li t-esc="line"/>
+                        </t>
+                    </ul>
+                    <div class="o_mst_voice_confirm_buttons">
+                        <button type="button" t-att-class="'btn ' + (result.danger ? 'btn-danger' : 'btn-primary')"
+                                t-on-click="() => this.confirmOperation(result)" t-esc="tr('Confirm')"/>
+                        <button type="button" class="btn btn-secondary" t-on-click="cancelOperation" t-esc="tr('Cancel')"/>
+                        <span class="o_mst_voice_hint" t-esc="tr('or say “yes” / “no”')"/>
+                    </div>
+                </div>
+                <!-- A menu with sub-menus (e.g. Discuss / Configuration): pick a screen -->
+                <div t-if="result and result.type === 'menu_choices'" class="o_mst_voice_results">
+                    <t t-foreach="result.choices" t-as="choice" t-key="choice.menu_id">
+                        <button type="button" class="o_mst_voice_row" t-on-click="() => this.pickMenu(choice)">
+                            <span class="o_mst_voice_row_name"><i class="fa fa-folder-open-o me-1 text-muted"/><t t-esc="choice.name"/></span>
+                        </button>
+                    </t>
+                </div>
+                <!-- Several records match "open k channel": pick the one to open -->
+                <div t-if="result and result.type === 'open_choices'" class="o_mst_voice_results">
+                    <t t-foreach="result.choices" t-as="choice" t-key="choice_index">
+                        <button type="button" class="o_mst_voice_row" t-on-click="() => this.pickRecord(choice)">
+                            <span class="o_mst_voice_row_name" t-esc="choice.name"/>
+                        </button>
+                    </t>
+                </div>
+                <!-- Several records match: pick one -->
+                <div t-if="result and result.type === 'choose'" class="o_mst_voice_results">
+                    <t t-foreach="result.choices" t-as="choice" t-key="choice_index">
+                        <button type="button" class="o_mst_voice_row" t-on-click="() => this.chooseRecord(choice)">
+                            <span class="o_mst_voice_row_name" t-esc="choice.name"/>
+                        </button>
+                    </t>
+                </div>
+                <!-- Create: required fields first -->
+                <div t-if="result and result.type === 'form' and state.form" class="o_mst_voice_form">
+                    <div class="o_mst_voice_confirm_title" t-esc="result.title"/>
+                    <t t-foreach="result.fields" t-as="field" t-key="field.name">
+                        <label class="o_mst_voice_field">
+                            <span class="o_mst_voice_field_label"><t t-esc="field.label"/><b t-if="field.required" class="text-danger"> *</b></span>
+                            <t t-if="field.type === 'selection'">
+                                <select class="form-select form-select-sm" t-on-change="(ev) => this.onFormInput(field, ev)">
+                                    <option value="">—</option>
+                                    <t t-foreach="field.selection" t-as="opt" t-key="opt_index">
+                                        <option t-att-value="opt[0]" t-att-selected="state.form.values[field.name] === opt[0]" t-esc="opt[1]"/>
+                                    </t>
+                                </select>
+                            </t>
+                            <t t-elif="field.type === 'boolean'">
+                                <input type="checkbox" class="form-check-input" t-att-checked="state.form.values[field.name]"
+                                       t-on-change="(ev) => this.onFormInput(field, ev)"/>
+                            </t>
+                            <t t-elif="field.type === 'many2one'">
+                                <input type="text" class="form-control form-control-sm" t-att-placeholder="tr('Type to search…')"
+                                       t-att-value="state.form.display[field.name]" t-on-input="(ev) => this.onFormInput(field, ev)"/>
+                                <span t-if="state.form.values[field.name]" class="o_mst_voice_picked">✓</span>
+                                <div t-if="(state.form.suggestions[field.name] || []).length" class="o_mst_voice_suggest">
+                                    <t t-foreach="state.form.suggestions[field.name]" t-as="option" t-key="option[0]">
+                                        <button type="button" t-on-click="() => this.pickRelated(field, option)" t-esc="option[1]"/>
+                                    </t>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <input class="form-control form-control-sm"
+                                       t-att-type="field.type === 'date' ? 'date' : (['integer', 'float', 'monetary'].includes(field.type) ? 'number' : 'text')"
+                                       t-att-value="state.form.values[field.name]" t-on-input="(ev) => this.onFormInput(field, ev)"/>
+                            </t>
+                        </label>
+                    </t>
+                    <ul t-if="result.lines.length" class="o_mst_voice_summary">
+                        <t t-foreach="result.lines" t-as="line" t-key="line_index">
+                            <li><t t-esc="line.quantity"/> × <t t-esc="line.display"/></li>
+                        </t>
+                    </ul>
+                    <div t-if="result.unsupported.length" class="o_mst_voice_hint">
+                        <t t-esc="tr('Also required, fill in the full form:')"/> <t t-esc="result.unsupported.join(', ')"/>
+                    </div>
+                    <div class="o_mst_voice_confirm_buttons">
+                        <button type="button" class="btn btn-primary" t-on-click="submitForm"
+                                t-att-disabled="formMissing.length or result.unsupported.length or state.status === 'thinking'" t-esc="tr('Create')"/>
+                        <button type="button" class="btn btn-secondary" t-on-click="openFullForm" t-esc="tr('Open full form')"/>
+                        <span t-if="formMissing.length" class="o_mst_voice_hint"><t t-esc="tr('Required:')"/> <t t-esc="formMissing.join(', ')"/></span>
+                    </div>
+                </div>
+                <div t-if="result and result.type === 'done'" class="o_mst_voice_done">
+                    <i class="fa fa-check-circle me-1"/> <t t-esc="result.message"/>
+                </div>
+                <div t-if="result and result.list_action" class="o_mst_voice_footer">
+                    <button type="button" class="btn btn-link p-0" t-on-click="openList" t-esc="tr('Open list')"/>
+                    <span t-if="result.source === 'ai'" class="o_mst_voice_badge">AI</span>
+                </div>
+            </div>
+
+            <!-- Floating mic: wrapper floats, halo glows behind, button on top -->
+            <div t-att-class="'o_mst_voice_fab_wrap' + (state.status === 'listening' ? ' o_mst_voice_listening' : '')">
+                <span class="o_mst_voice_fab_halo" aria-hidden="true"/>
+                <button type="button" class="o_mst_voice_fab"
+                        t-att-aria-label="state.status === 'listening' ? tr('Stop listening') : tr('Voice search')"
+                        t-att-title="state.status === 'listening' ? tr('Stop listening') : tr('Voice search')"
+                        t-on-click="onFabClick">
+                    <i t-att-class="state.status === 'listening' ? 'fa fa-stop' : 'fa fa-microphone'"/>
+                </button>
+            </div>
+        </div>
+    </t>
+</templates>

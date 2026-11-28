@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_voice_search" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.mst.ai.voice.search</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="AI Voice Search" name="mst_ai_voice_search" groups="base.group_system">
+                    <block title="Understanding requests" name="mst_voice_ai_block">
+                        <setting string="AI Provider" help="Without AI, requests are understood with built-in keyword matching. With AI, keyword matching is still used if the AI is unavailable.">
+                            <field name="mst_voice_ai_provider"/>
+                        </setting>
+                        <setting string="AI API Key" help="Your OpenAI or Google AI Studio API key." invisible="mst_voice_ai_provider == 'none'">
+                            <field name="mst_voice_ai_api_key" password="True" placeholder="Paste your API key"/>
+                        </setting>
+                        <setting string="AI Model" help="Leave empty to use gpt-4o-mini (OpenAI) or gemini-2.5-flash (Gemini)." invisible="mst_voice_ai_provider == 'none'">
+                            <field name="mst_voice_ai_model" placeholder="Default model"/>
+                        </setting>
+                    </block>
+                    <block title="Voice" name="mst_voice_voice_block">
+                        <setting string="Voice Languages" help="Languages the microphone listens in. With English and Tamil, a switch appears in the voice panel.">
+                            <field name="mst_voice_languages"/>
+                        </setting>
+                        <setting string="Silence Wait" help="Seconds to wait after you stop speaking before the request is sent (1-10).">
+                            <field name="mst_voice_silence_seconds"/>
+                        </setting>
+                        <setting string="Reply Language" help="Language of answers, chat and spoken replies, also when the AI answers. With the voice panel language, the English / தமிழ் switch changes the replies immediately.">
+                            <field name="mst_voice_reply_language"/>
+                        </setting>
+                    </block>
+                    <block title="Voice actions" name="mst_voice_action_block">
+                        <setting string="Voice Actions" help="What users may do by voice. Every change is shown for confirmation first and runs with the user's own access rights.">
+                            <field name="mst_voice_action_mode"/>
+                        </setting>
+                    </block>
+                    <block title="Answers" name="mst_voice_answer_block">
+                        <setting string="Maximum Results" help="How many records are listed in one answer (1 to 50).">
+                            <field name="mst_voice_max_results"/>
+                        </setting>
+                        <setting string="Speak Replies" help="Read each answer aloud after the request.">
+                            <field name="mst_voice_speak_replies"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
